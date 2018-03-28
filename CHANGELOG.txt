@@ -1,0 +1,1516 @@
+Mormon Documentation Project - LDS Scriptures
+---------------------------------------------
+
+3.0 (2013-11-04)
+---
+
+- Completely revised and normalized database schema
+
+- Foreign key support for PostgreSQL and SQLite 3
+
+- Fulltext indexes for MySQL, using MyISAM table format
+
+- Create 'scriptures' view for quick denormalized access
+
+- Fixed typo 'mywhole' in Psalms 111:1
+
+- Added the missing answers text to D&C 77
+
+- Fix '2 Kings' long title typo
+
+- Cleanup lds_org naming schema to match current layout
+
+- Cleaner SQL dumps for PostgreSQL and MySQL
+
+- Change all double spaces between sentences ('  ') to single spaces (' '), to
+match Church scriptures website text format; affected 4,889 verses:
+
+Genesis 1:2 Genesis 1:5 Genesis 1:8 Genesis 1:31 Genesis 2:14 Genesis
+3:1 Genesis 3:11 Genesis 3:13 Genesis 4:2 Genesis 4:4 Genesis 4:5 Genesis
+4:6 Genesis 4:7 Genesis 4:9 Genesis 4:10 Genesis 4:15 Genesis 5:1 Genesis
+11:3 Genesis 12:6 Genesis 12:18 Genesis 12:19 Genesis 13:9 Genesis 14:20
+Genesis 16:2 Genesis 16:6 Genesis 16:8 Genesis 17:17 Genesis 18:5 Genesis
+18:9 Genesis 18:10 Genesis 18:14 Genesis 18:15 Genesis 18:28 Genesis
+18:29 Genesis 18:30 Genesis 18:31 Genesis 18:32 Genesis 19:2 Genesis
+19:5 Genesis 19:9 Genesis 19:12 Genesis 19:14 Genesis 19:22 Genesis
+20:5 Genesis 20:9 Genesis 21:7 Genesis 21:16 Genesis 21:17 Genesis
+22:7 Genesis 23:15 Genesis 24:23 Genesis 24:31 Genesis 24:33 Genesis
+24:47 Genesis 24:58 Genesis 24:65 Genesis 25:3 Genesis 25:4 Genesis
+25:22 Genesis 26:1 Genesis 26:9 Genesis 27:5 Genesis 27:20 Genesis
+27:24 Genesis 27:25 Genesis 27:32 Genesis 27:33 Genesis 27:36 Genesis
+27:38 Genesis 29:4 Genesis 29:5 Genesis 29:6 Genesis 29:13 Genesis 29:14
+Genesis 29:15 Genesis 29:25 Genesis 30:15 Genesis 30:16 Genesis 30:31
+Genesis 31:15 Genesis 31:25 Genesis 31:32 Genesis 31:33 Genesis 31:34
+Genesis 31:35 Genesis 31:36 Genesis 31:37 Genesis 31:42 Genesis 31:53
+Genesis 32:17 Genesis 32:26 Genesis 32:27 Genesis 32:29 Genesis 33:1
+Genesis 33:5 Genesis 33:8 Genesis 33:11 Genesis 33:15 Genesis 34:23
+Genesis 35:22 Genesis 37:2 Genesis 37:8 Genesis 37:10 Genesis 37:13
+Genesis 37:14 Genesis 37:17 Genesis 37:27 Genesis 37:35 Genesis 38:11
+Genesis 38:17 Genesis 38:18 Genesis 38:21 Genesis 38:24 Genesis 38:26
+Genesis 39:6 Genesis 40:8 Genesis 41:4 Genesis 41:7 Genesis 41:21 Genesis
+41:45 Genesis 41:46 Genesis 42:7 Genesis 42:20 Genesis 43:7 Genesis 43:14
+Genesis 43:23 Genesis 43:27 Genesis 43:28 Genesis 43:29 Genesis 43:34
+Genesis 44:2 Genesis 44:5 Genesis 44:7 Genesis 44:15 Genesis 44:16 Genesis
+44:34 Genesis 45:1 Genesis 45:3 Genesis 45:4 Genesis 45:26 Genesis 46:2
+Genesis 46:12 Genesis 47:3 Genesis 47:15 Genesis 47:19 Genesis 47:30
+Genesis 47:31 Genesis 48:9 Genesis 48:10 Genesis 50:5 Genesis 50:17
+Genesis 50:21 Exodus 1:11 Exodus 1:12 Exodus 2:6 Exodus 2:8 Exodus 2:9
+Exodus 2:10 Exodus 2:14 Exodus 2:15 Exodus 2:20 Exodus 3:4 Exodus 3:6
+Exodus 3:13 Exodus 4:2 Exodus 4:3 Exodus 4:4 Exodus 4:6 Exodus 4:7 Exodus
+4:11 Exodus 4:14 Exodus 4:18 Exodus 4:27 Exodus 5:2 Exodus 5:4 Exodus 5:22
+Exodus 8:10 Exodus 9:7 Exodus 10:3 Exodus 10:6 Exodus 10:7 Exodus 10:11
+Exodus 11:3 Exodus 11:8 Exodus 12:27 Exodus 12:36 Exodus 13:14 Exodus 14:4
+Exodus 14:11 Exodus 14:12 Exodus 15:11 Exodus 16:8 Exodus 16:15 Exodus
+17:2 Exodus 17:4 Exodus 17:6 Exodus 18:14 Exodus 19:6 Exodus 19:8 Exodus
+19:9 Exodus 22:27 Exodus 23:11 Exodus 23:19 Exodus 32:12 Exodus 32:24
+Exodus 32:26 Exodus 33:7 Exodus 33:11 Exodus 33:12 Exodus 33:16 Exodus
+34:18 Exodus 34:20 Exodus 34:26 Exodus 34:28 Exodus 34:34 Exodus 36:3
+Exodus 36:6 Exodus 40:33 Leviticus 6:17 Leviticus 6:18 Leviticus 10:3
+Leviticus 10:7 Leviticus 12:7 Leviticus 16:34 Leviticus 17:7 Leviticus
+19:19 Leviticus 22:4 Leviticus 23:41 Leviticus 24:11 Leviticus 24:23
+Numbers 2:9 Numbers 2:16 Numbers 2:24 Numbers 4:19 Numbers 7:88 Numbers
+11:11 Numbers 11:12 Numbers 11:18 Numbers 11:22 Numbers 11:23 Numbers
+11:29 Numbers 12:2 Numbers 12:4 Numbers 12:14 Numbers 13:16 Numbers
+13:20 Numbers 13:22 Numbers 14:2 Numbers 14:3 Numbers 14:10 Numbers
+14:11 Numbers 14:27 Numbers 14:41 Numbers 16:14 Numbers 16:45 Numbers
+20:5 Numbers 20:20 Numbers 21:5 Numbers 21:7 Numbers 21:18 Numbers
+21:29 Numbers 22:4 Numbers 22:22 Numbers 22:30 Numbers 22:32 Numbers
+22:35 Numbers 22:37 Numbers 22:38 Numbers 23:3 Numbers 23:8 Numbers 23:10
+Numbers 23:11 Numbers 23:17 Numbers 24:9 Numbers 25:8 Numbers 26:9 Numbers
+26:37 Numbers 26:42 Numbers 26:58 Numbers 26:65 Numbers 27:4 Deuteronomy
+1:28 Deuteronomy 1:41 Deuteronomy 2:13 Deuteronomy 3:11 Deuteronomy
+5:22 Deuteronomy 5:25 Deuteronomy 9:19 Deuteronomy 12:30 Deuteronomy
+13:5 Deuteronomy 14:21 Deuteronomy 15:17 Deuteronomy 17:7 Deuteronomy
+20:5 Deuteronomy 20:6 Deuteronomy 20:7 Deuteronomy 20:8 Deuteronomy 21:8
+Deuteronomy 22:17 Deuteronomy 26:10 Deuteronomy 27:15 Deuteronomy 27:16
+Deuteronomy 27:17 Deuteronomy 27:18 Deuteronomy 27:19 Deuteronomy 27:20
+Deuteronomy 27:21 Deuteronomy 27:22 Deuteronomy 27:23 Deuteronomy 27:24
+Deuteronomy 27:25 Deuteronomy 27:26 Deuteronomy 28:67 Deuteronomy 29:24
+Deuteronomy 31:14 Deuteronomy 32:6 Deuteronomy 32:38 Deuteronomy 33:29
+Deuteronomy 34:1 Joshua 1:9 Joshua 2:1 Joshua 2:14 Joshua 2:21 Joshua
+3:6 Joshua 5:9 Joshua 5:14 Joshua 5:15 Joshua 6:3 Joshua 7:2 Joshua 7:7
+Joshua 7:25 Joshua 7:26 Joshua 8:8 Joshua 8:18 Joshua 9:8 Joshua 9:17
+Joshua 9:18 Joshua 10:13 Joshua 10:24 Joshua 11:23 Joshua 13:23 Joshua
+14:15 Joshua 15:5 Joshua 15:12 Joshua 15:19 Joshua 16:8 Joshua 17:4
+Joshua 18:1 Joshua 18:20 Joshua 18:28 Joshua 19:8 Joshua 19:51 Joshua
+22:7 Joshua 24:22 Judges 1:3 Judges 1:7 Judges 1:15 Judges 1:17 Judges
+1:23 Judges 3:11 Judges 3:19 Judges 3:20 Judges 3:28 Judges 3:30 Judges
+4:9 Judges 4:14 Judges 4:18 Judges 4:19 Judges 4:20 Judges 4:21 Judges
+4:22 Judges 5:9 Judges 5:15 Judges 5:16 Judges 5:17 Judges 5:21 Judges
+5:28 Judges 5:30 Judges 5:31 Judges 6:13 Judges 6:15 Judges 6:18 Judges
+6:20 Judges 6:21 Judges 6:22 Judges 6:29 Judges 6:31 Judges 7:3 Judges
+7:11 Judges 7:24 Judges 8:1 Judges 8:2 Judges 8:3 Judges 8:18 Judges
+8:20 Judges 8:21 Judges 8:24 Judges 8:25 Judges 8:28 Judges 9:2 Judges
+9:28 Judges 9:29 Judges 9:36 Judges 9:38 Judges 9:54 Judges 10:17 Judges
+10:18 Judges 11:7 Judges 11:17 Judges 11:24 Judges 11:25 Judges 11:26
+Judges 11:33 Judges 11:35 Judges 11:38 Judges 11:39 Judges 12:1 Judges
+12:5 Judges 12:6 Judges 12:7 Judges 12:9 Judges 13:11 Judges 13:12 Judges
+13:16 Judges 13:20 Judges 13:21 Judges 14:3 Judges 14:13 Judges 14:14
+Judges 14:15 Judges 14:16 Judges 14:18 Judges 14:19 Judges 15:1 Judges
+15:2 Judges 15:6 Judges 15:10 Judges 15:11 Judges 15:12 Judges 15:13
+Judges 16:2 Judges 16:9 Judges 16:12 Judges 16:13 Judges 16:14 Judges
+16:15 Judges 16:18 Judges 16:20 Judges 16:25 Judges 16:30 Judges 16:31
+Judges 17:2 Judges 17:9 Judges 17:10 Judges 18:3 Judges 18:9 Judges
+18:14 Judges 18:18 Judges 18:23 Judges 18:24 Judges 18:28 Judges 19:8
+Judges 19:17 Judges 19:28 Judges 20:13 Judges 20:18 Judges 20:23 Judges
+20:28 Judges 20:32 Judges 21:5 Judges 21:8 Ruth 1:1 Ruth 1:2 Ruth 1:9
+Ruth 1:11 Ruth 1:12 Ruth 1:13 Ruth 1:19 Ruth 2:2 Ruth 2:4 Ruth 2:8 Ruth
+2:9 Ruth 2:14 Ruth 2:19 Ruth 2:20 Ruth 3:2 Ruth 3:9 Ruth 3:14 Ruth 3:15
+Ruth 3:16 Ruth 4:1 Ruth 4:2 Ruth 4:4 Ruth 4:8 Ruth 4:11 1 Samuel 1:3
+1 Samuel 1:8 1 Samuel 1:9 1 Samuel 1:14 1 Samuel 1:23 1 Samuel 1:28
+1 Samuel 2:11 1 Samuel 2:14 1 Samuel 2:20 1 Samuel 2:21 1 Samuel 2:23
+1 Samuel 2:25 1 Samuel 2:28 1 Samuel 3:5 1 Samuel 3:6 1 Samuel 3:8 1
+Samuel 3:9 1 Samuel 3:10 1 Samuel 3:15 1 Samuel 3:16 1 Samuel 3:17 1
+Samuel 4:1 1 Samuel 4:3 1 Samuel 4:6 1 Samuel 4:7 1 Samuel 4:8 1 Samuel
+4:13 1 Samuel 4:14 1 Samuel 4:16 1 Samuel 4:18 1 Samuel 4:20 1 Samuel
+5:3 1 Samuel 5:8 1 Samuel 5:10 1 Samuel 6:2 1 Samuel 6:4 1 Samuel 6:6 1
+Samuel 6:20 1 Samuel 7:6 1 Samuel 7:7 1 Samuel 7:14 1 Samuel 8:6 1 Samuel
+8:22 1 Samuel 9:3 1 Samuel 9:7 1 Samuel 9:10 1 Samuel 9:13 1 Samuel 9:17
+1 Samuel 9:20 1 Samuel 9:21 1 Samuel 9:24 1 Samuel 9:26 1 Samuel 10:11 1
+Samuel 10:12 1 Samuel 10:14 1 Samuel 10:16 1 Samuel 10:19 1 Samuel 10:22
+1 Samuel 10:25 1 Samuel 10:27 1 Samuel 11:5 1 Samuel 11:7 1 Samuel 11:9
+1 Samuel 11:12 1 Samuel 12:3 1 Samuel 12:5 1 Samuel 12:13 1 Samuel 12:17
+1 Samuel 13:3 1 Samuel 13:4 1 Samuel 13:7 1 Samuel 13:9 1 Samuel 13:11 1
+Samuel 13:15 1 Samuel 14:1 1 Samuel 14:3 1 Samuel 14:12 1 Samuel 14:17 1
+Samuel 14:18 1 Samuel 14:24 1 Samuel 14:28 1 Samuel 14:30 1 Samuel 14:33
+1 Samuel 14:34 1 Samuel 14:36 1 Samuel 14:37 1 Samuel 14:39 1 Samuel
+14:40 1 Samuel 14:41 1 Samuel 14:42 1 Samuel 14:43 1 Samuel 14:45 1
+Samuel 15:6 1 Samuel 15:11 1 Samuel 15:16 1 Samuel 15:22 1 Samuel 15:23
+1 Samuel 15:32 1 Samuel 15:33 1 Samuel 16:1 1 Samuel 16:2 1 Samuel 16:4
+1 Samuel 16:5 1 Samuel 16:8 1 Samuel 16:9 1 Samuel 16:10 1 Samuel 16:11 1
+Samuel 16:12 1 Samuel 16:13 1 Samuel 17:8 1 Samuel 17:25 1 Samuel 17:26 1
+Samuel 17:28 1 Samuel 17:29 1 Samuel 17:37 1 Samuel 17:39 1 Samuel 17:43
+1 Samuel 17:51 1 Samuel 17:52 1 Samuel 17:55 1 Samuel 17:58 1 Samuel
+18:11 1 Samuel 18:17 1 Samuel 18:18 1 Samuel 18:21 1 Samuel 18:23 1
+Samuel 18:25 1 Samuel 18:27 1 Samuel 19:7 1 Samuel 19:17 1 Samuel 19:18 1
+Samuel 19:21 1 Samuel 19:22 1 Samuel 19:24 1 Samuel 20:1 1 Samuel 20:2 1
+Samuel 20:10 1 Samuel 20:11 1 Samuel 20:21 1 Samuel 20:29 1 Samuel 20:31
+1 Samuel 20:32 1 Samuel 20:38 1 Samuel 20:42 1 Samuel 21:3 1 Samuel 21:8
+1 Samuel 21:9 1 Samuel 21:11 1 Samuel 21:15 1 Samuel 22:5 1 Samuel 22:12
+1 Samuel 22:15 1 Samuel 22:17 1 Samuel 22:18 1 Samuel 23:2 1 Samuel 23:4
+1 Samuel 23:5 1 Samuel 23:7 1 Samuel 23:11 1 Samuel 23:12 1 Samuel 23:13
+1 Samuel 23:14 1 Samuel 23:25 1 Samuel 24:4 1 Samuel 24:7 1 Samuel 24:8 1
+Samuel 24:14 1 Samuel 24:16 1 Samuel 24:19 1 Samuel 24:22 1 Samuel 25:1 1
+Samuel 25:8 1 Samuel 25:10 1 Samuel 25:13 1 Samuel 25:19 1 Samuel 26:3 1
+Samuel 26:6 1 Samuel 26:14 1 Samuel 26:15 1 Samuel 26:16 1 Samuel 26:17 1
+Samuel 26:18 1 Samuel 26:19 1 Samuel 26:22 1 Samuel 26:25 1 Samuel 27:10
+1 Samuel 28:1 1 Samuel 28:2 1 Samuel 28:3 1 Samuel 28:7 1 Samuel 28:11
+1 Samuel 28:12 1 Samuel 28:13 1 Samuel 28:14 1 Samuel 28:15 1 Samuel
+28:23 1 Samuel 28:25 1 Samuel 29:3 1 Samuel 29:4 1 Samuel 29:8 1 Samuel
+29:11 1 Samuel 30:7 1 Samuel 30:8 1 Samuel 30:13 1 Samuel 30:15 1 Samuel
+30:24 1 Samuel 31:4 2 Samuel 1:3 2 Samuel 1:4 2 Samuel 1:7 2 Samuel 1:8
+2 Samuel 1:13 2 Samuel 1:15 2 Samuel 1:25 2 Samuel 2:1 2 Samuel 2:4 2
+Samuel 2:10 2 Samuel 2:14 2 Samuel 2:20 2 Samuel 2:21 2 Samuel 2:22 2
+Samuel 2:26 2 Samuel 2:32 2 Samuel 3:5 2 Samuel 3:12 2 Samuel 3:16 2
+Samuel 3:20 2 Samuel 3:21 2 Samuel 3:24 2 Samuel 3:31 2 Samuel 3:34 2
+Samuel 4:4 2 Samuel 4:11 2 Samuel 4:12 2 Samuel 5:8 2 Samuel 5:9 2 Samuel
+5:19 2 Samuel 5:20 2 Samuel 6:12 2 Samuel 6:19 2 Samuel 6:20 2 Samuel
+7:11 2 Samuel 7:14 2 Samuel 7:18 2 Samuel 7:19 2 Samuel 7:20 2 Samuel
+8:2 2 Samuel 8:6 2 Samuel 8:10 2 Samuel 8:14 2 Samuel 9:2 2 Samuel 9:3
+2 Samuel 9:4 2 Samuel 9:6 2 Samuel 9:10 2 Samuel 9:11 2 Samuel 9:12 2
+Samuel 10:2 2 Samuel 10:3 2 Samuel 10:14 2 Samuel 10:17 2 Samuel 10:19
+2 Samuel 11:1 2 Samuel 11:3 2 Samuel 11:6 2 Samuel 11:8 2 Samuel 11:10 2
+Samuel 11:11 2 Samuel 11:12 2 Samuel 11:20 2 Samuel 11:21 2 Samuel 11:27
+2 Samuel 12:1 2 Samuel 12:7 2 Samuel 12:9 2 Samuel 12:13 2 Samuel 12:15 2
+Samuel 12:18 2 Samuel 12:19 2 Samuel 12:21 2 Samuel 12:23 2 Samuel 12:30
+2 Samuel 12:31 2 Samuel 13:4 2 Samuel 13:8 2 Samuel 13:9 2 Samuel 13:10 2
+Samuel 13:13 2 Samuel 13:15 2 Samuel 13:16 2 Samuel 13:18 2 Samuel 13:20
+2 Samuel 13:25 2 Samuel 13:26 2 Samuel 13:28 2 Samuel 13:29 2 Samuel 13:34
+2 Samuel 13:37 2 Samuel 14:3 2 Samuel 14:5 2 Samuel 14:11 2 Samuel 14:12 2
+Samuel 14:13 2 Samuel 14:18 2 Samuel 14:19 2 Samuel 14:24 2 Samuel 14:30 2
+Samuel 14:32 2 Samuel 15:2 2 Samuel 15:9 2 Samuel 15:12 2 Samuel 15:16 2
+Samuel 15:19 2 Samuel 15:20 2 Samuel 15:22 2 Samuel 15:27 2 Samuel 15:31
+2 Samuel 15:35 2 Samuel 16:2 2 Samuel 16:3 2 Samuel 16:4 2 Samuel 16:9 2
+Samuel 16:10 2 Samuel 16:11 2 Samuel 16:17 2 Samuel 16:19 2 Samuel 17:6 2
+Samuel 17:14 2 Samuel 17:20 2 Samuel 17:24 2 Samuel 18:2 2 Samuel 18:4 2
+Samuel 18:5 2 Samuel 18:9 2 Samuel 18:11 2 Samuel 18:14 2 Samuel 18:21 2
+Samuel 18:22 2 Samuel 18:23 2 Samuel 18:25 2 Samuel 18:26 2 Samuel 18:27 2
+Samuel 18:28 2 Samuel 18:29 2 Samuel 18:30 2 Samuel 18:32 2 Samuel 18:33
+2 Samuel 19:6 2 Samuel 19:8 2 Samuel 19:10 2 Samuel 19:11 2 Samuel 19:13
+2 Samuel 19:15 2 Samuel 19:18 2 Samuel 19:22 2 Samuel 19:23 2 Samuel
+19:28 2 Samuel 19:29 2 Samuel 19:35 2 Samuel 19:37 2 Samuel 19:39 2
+Samuel 19:42 2 Samuel 19:43 2 Samuel 20:3 2 Samuel 20:8 2 Samuel 20:9 2
+Samuel 20:10 2 Samuel 20:12 2 Samuel 20:17 2 Samuel 20:21 2 Samuel 20:22
+2 Samuel 21:1 2 Samuel 21:3 2 Samuel 21:4 2 Samuel 21:6 2 Samuel 21:14 2
+Samuel 21:17 2 Samuel 22:32 2 Samuel 23:1 2 Samuel 23:11 2 Samuel 23:17 2
+Samuel 23:18 2 Samuel 23:19 2 Samuel 23:23 2 Samuel 24:4 2 Samuel 24:10 2
+Samuel 24:13 2 Samuel 24:16 2 Samuel 24:17 2 Samuel 24:21 2 Samuel 24:23
+2 Samuel 24:24 2 Samuel 24:25 1 Kings 1:6 1 Kings 1:13 1 Kings 1:16 1
+Kings 1:23 1 Kings 1:28 1 Kings 1:32 1 Kings 1:39 1 Kings 1:41 1 Kings
+1:45 1 Kings 1:47 1 Kings 1:53 1 Kings 2:13 1 Kings 2:14 1 Kings 2:16 1
+Kings 2:19 1 Kings 2:20 1 Kings 2:22 1 Kings 2:28 1 Kings 2:29 1 Kings
+2:30 1 Kings 2:38 1 Kings 2:39 1 Kings 2:42 1 Kings 2:46 1 Kings 3:15 1
+Kings 3:22 1 Kings 3:24 1 Kings 3:26 1 Kings 6:38 1 Kings 7:8 1 Kings
+7:14 1 Kings 7:40 1 Kings 7:51 1 Kings 8:27 1 Kings 8:63 1 Kings 9:13
+1 Kings 9:25 1 Kings 10:13 1 Kings 11:22 1 Kings 11:40 1 Kings 12:3 1
+Kings 12:5 1 Kings 12:16 1 Kings 12:18 1 Kings 12:24 1 Kings 12:32 1
+Kings 13:4 1 Kings 13:6 1 Kings 13:12 1 Kings 13:13 1 Kings 13:14 1
+Kings 13:18 1 Kings 13:27 1 Kings 14:4 1 Kings 14:6 1 Kings 14:14 1
+Kings 14:21 1 Kings 14:31 1 Kings 15:2 1 Kings 15:7 1 Kings 15:10 1
+Kings 15:23 1 Kings 16:15 1 Kings 17:10 1 Kings 17:18 1 Kings 17:19
+1 Kings 18:2 1 Kings 18:21 1 Kings 18:24 1 Kings 18:26 1 Kings 18:30
+1 Kings 18:34 1 Kings 18:40 1 Kings 18:42 1 Kings 18:43 1 Kings 18:44
+1 Kings 18:45 1 Kings 19:6 1 Kings 19:11 1 Kings 19:13 1 Kings 19:20
+1 Kings 19:21 1 Kings 20:9 1 Kings 20:12 1 Kings 20:13 1 Kings 20:14
+1 Kings 20:16 1 Kings 20:25 1 Kings 20:29 1 Kings 20:32 1 Kings 20:33
+1 Kings 20:34 1 Kings 20:35 1 Kings 20:36 1 Kings 20:37 1 Kings 20:40
+1 Kings 21:4 1 Kings 21:7 1 Kings 21:10 1 Kings 21:13 1 Kings 21:19
+1 Kings 21:29 1 Kings 22:4 1 Kings 22:6 1 Kings 22:8 1 Kings 22:15 1
+Kings 22:20 1 Kings 22:22 1 Kings 22:28 1 Kings 22:30 1 Kings 22:32 1
+Kings 22:42 1 Kings 22:49 2 Kings 1:4 2 Kings 1:6 2 Kings 1:8 2 Kings
+1:9 2 Kings 1:10 2 Kings 1:11 2 Kings 1:12 2 Kings 1:13 2 Kings 1:15 2
+Kings 1:16 2 Kings 1:17 2 Kings 2:2 2 Kings 2:3 2 Kings 2:4 2 Kings 2:5
+2 Kings 2:6 2 Kings 2:9 2 Kings 2:12 2 Kings 2:14 2 Kings 2:15 2 Kings
+2:16 2 Kings 2:17 2 Kings 2:20 2 Kings 2:24 2 Kings 3:7 2 Kings 3:8 2
+Kings 3:10 2 Kings 3:11 2 Kings 3:12 2 Kings 3:13 2 Kings 3:15 2 Kings
+3:27 2 Kings 4:2 2 Kings 4:6 2 Kings 4:7 2 Kings 4:8 2 Kings 4:12 2 Kings
+4:13 2 Kings 4:14 2 Kings 4:15 2 Kings 4:16 2 Kings 4:19 2 Kings 4:23 2
+Kings 4:25 2 Kings 4:26 2 Kings 4:27 2 Kings 4:28 2 Kings 4:30 2 Kings
+4:31 2 Kings 4:36 2 Kings 4:40 2 Kings 4:41 2 Kings 4:42 2 Kings 4:43
+2 Kings 5:3 2 Kings 5:5 2 Kings 5:7 2 Kings 5:8 2 Kings 5:12 2 Kings
+5:13 2 Kings 5:16 2 Kings 5:17 2 Kings 5:19 2 Kings 5:21 2 Kings 5:22
+2 Kings 5:23 2 Kings 5:25 2 Kings 5:26 2 Kings 5:27 2 Kings 6:2 2 Kings
+6:3 2 Kings 6:4 2 Kings 6:5 2 Kings 6:6 2 Kings 6:7 2 Kings 6:13 2 Kings
+6:15 2 Kings 6:17 2 Kings 6:18 2 Kings 6:19 2 Kings 6:20 2 Kings 6:21 2
+Kings 6:22 2 Kings 6:23 2 Kings 6:27 2 Kings 6:28 2 Kings 6:32 2 Kings
+7:2 2 Kings 7:4 2 Kings 7:12 2 Kings 7:15 2 Kings 7:16 2 Kings 7:19 2
+Kings 8:5 2 Kings 8:6 2 Kings 8:12 2 Kings 8:13 2 Kings 8:14 2 Kings
+8:22 2 Kings 8:26 2 Kings 8:29 2 Kings 9:3 2 Kings 9:5 2 Kings 9:10 2
+Kings 9:11 2 Kings 9:12 2 Kings 9:14 2 Kings 9:16 2 Kings 9:17 2 Kings
+9:18 2 Kings 9:19 2 Kings 9:21 2 Kings 9:22 2 Kings 9:26 2 Kings 9:27 2
+Kings 9:32 2 Kings 9:33 2 Kings 9:36 2 Kings 10:1 2 Kings 10:6 2 Kings
+10:8 2 Kings 10:12 2 Kings 10:13 2 Kings 10:14 2 Kings 10:15 2 Kings
+10:16 2 Kings 10:19 2 Kings 10:20 2 Kings 10:21 2 Kings 10:22 2 Kings
+10:25 2 Kings 10:35 2 Kings 11:3 2 Kings 11:15 2 Kings 11:18 2 Kings
+11:19 2 Kings 12:1 2 Kings 12:7 2 Kings 13:14 2 Kings 13:15 2 Kings
+13:16 2 Kings 13:17 2 Kings 13:18 2 Kings 13:20 2 Kings 13:25 2 Kings
+14:2 2 Kings 14:11 2 Kings 15:2 2 Kings 15:5 2 Kings 15:12 2 Kings 15:20
+2 Kings 15:33 2 Kings 15:35 2 Kings 17:23 2 Kings 18:2 2 Kings 18:14
+2 Kings 18:17 2 Kings 18:20 2 Kings 18:25 2 Kings 18:27 2 Kings 18:34
+2 Kings 19:22 2 Kings 19:25 2 Kings 19:37 2 Kings 20:1 2 Kings 20:3 2
+Kings 20:7 2 Kings 20:14 2 Kings 20:15 2 Kings 20:19 2 Kings 21:1 2 Kings
+21:19 2 Kings 22:1 2 Kings 22:8 2 Kings 22:10 2 Kings 22:20 2 Kings 23:3
+2 Kings 23:17 2 Kings 23:18 2 Kings 23:30 2 Kings 23:31 2 Kings 23:36 2
+Kings 24:8 2 Kings 24:18 2 Kings 25:21 1 Chronicles 1:9 1 Chronicles 1:23
+1 Chronicles 1:31 1 Chronicles 1:32 1 Chronicles 1:33 1 Chronicles 1:34
+1 Chronicles 1:40 1 Chronicles 1:41 1 Chronicles 1:42 1 Chronicles 1:51
+1 Chronicles 1:54 1 Chronicles 2:3 1 Chronicles 2:4 1 Chronicles 2:16 1
+Chronicles 2:23 1 Chronicles 2:28 1 Chronicles 2:31 1 Chronicles 2:33
+1 Chronicles 2:34 1 Chronicles 2:55 1 Chronicles 4:2 1 Chronicles 4:6
+1 Chronicles 4:10 1 Chronicles 4:12 1 Chronicles 4:18 1 Chronicles 4:20
+1 Chronicles 4:22 1 Chronicles 4:31 1 Chronicles 4:33 1 Chronicles 6:3
+1 Chronicles 6:19 1 Chronicles 6:33 1 Chronicles 6:60 1 Chronicles 7:8
+1 Chronicles 7:17 1 Chronicles 7:29 1 Chronicles 7:40 1 Chronicles 8:10
+1 Chronicles 8:28 1 Chronicles 8:32 1 Chronicles 8:38 1 Chronicles 8:40
+1 Chronicles 9:9 1 Chronicles 9:22 1 Chronicles 9:38 1 Chronicles 10:4 1
+Chronicles 11:5 1 Chronicles 11:6 1 Chronicles 11:19 1 Chronicles 12:18 1
+Chronicles 13:14 1 Chronicles 14:8 1 Chronicles 14:10 1 Chronicles 14:11 1
+Chronicles 16:36 1 Chronicles 16:42 1 Chronicles 17:10 1 Chronicles 17:18
+1 Chronicles 18:6 1 Chronicles 18:13 1 Chronicles 19:2 1 Chronicles 19:3
+1 Chronicles 19:5 1 Chronicles 19:7 1 Chronicles 19:15 1 Chronicles 19:17
+1 Chronicles 20:1 1 Chronicles 20:3 1 Chronicles 21:3 1 Chronicles 21:12 1
+Chronicles 21:15 1 Chronicles 21:16 1 Chronicles 21:17 1 Chronicles 21:20
+1 Chronicles 22:5 1 Chronicles 22:16 1 Chronicles 22:18 1 Chronicles 23:10
+1 Chronicles 23:17 1 Chronicles 23:21 1 Chronicles 24:1 1 Chronicles 24:4
+1 Chronicles 25:5 1 Chronicles 26:14 1 Chronicles 26:31 1 Chronicles 27:22
+1 Chronicles 27:31 1 Chronicles 29:5 1 Chronicles 29:14 1 Chronicles 29:17
+1 Chronicles 29:20 1 Chronicles 29:22 2 Chronicles 2:4 2 Chronicles 2:6
+2 Chronicles 3:3 2 Chronicles 3:9 2 Chronicles 4:3 2 Chronicles 4:8 2
+Chronicles 4:11 2 Chronicles 5:9 2 Chronicles 6:18 2 Chronicles 8:16 2
+Chronicles 9:12 2 Chronicles 9:14 2 Chronicles 9:16 2 Chronicles 9:19 2
+Chronicles 10:3 2 Chronicles 10:5 2 Chronicles 10:16 2 Chronicles 10:18 2
+Chronicles 11:4 2 Chronicles 11:23 2 Chronicles 12:13 2 Chronicles 12:15
+2 Chronicles 13:2 2 Chronicles 13:9 2 Chronicles 13:12 2 Chronicles 14:1
+2 Chronicles 14:7 2 Chronicles 14:11 2 Chronicles 16:8 2 Chronicles 16:9
+2 Chronicles 16:10 2 Chronicles 18:2 2 Chronicles 18:3 2 Chronicles 18:5 2
+Chronicles 18:7 2 Chronicles 18:14 2 Chronicles 18:19 2 Chronicles 18:20 2
+Chronicles 18:21 2 Chronicles 18:27 2 Chronicles 18:29 2 Chronicles 18:31
+2 Chronicles 19:2 2 Chronicles 19:11 2 Chronicles 20:6 2 Chronicles 20:12
+2 Chronicles 20:31 2 Chronicles 20:37 2 Chronicles 21:1 2 Chronicles 21:10
+2 Chronicles 21:19 2 Chronicles 21:20 2 Chronicles 22:1 2 Chronicles 22:2
+2 Chronicles 22:6 2 Chronicles 22:9 2 Chronicles 22:11 2 Chronicles 23:3 2
+Chronicles 23:11 2 Chronicles 23:13 2 Chronicles 23:14 2 Chronicles 24:1 2
+Chronicles 24:5 2 Chronicles 24:11 2 Chronicles 24:14 2 Chronicles 24:17 2
+Chronicles 24:20 2 Chronicles 24:22 2 Chronicles 24:24 2 Chronicles 24:27
+2 Chronicles 25:1 2 Chronicles 25:9 2 Chronicles 25:16 2 Chronicles 26:3
+2 Chronicles 26:15 2 Chronicles 27:1 2 Chronicles 27:2 2 Chronicles 27:5 2
+Chronicles 28:5 2 Chronicles 29:1 2 Chronicles 29:16 2 Chronicles 29:21 2
+Chronicles 29:27 2 Chronicles 29:30 2 Chronicles 29:31 2 Chronicles 29:35
+2 Chronicles 30:18 2 Chronicles 31:1 2 Chronicles 32:8 2 Chronicles 32:13
+2 Chronicles 32:21 2 Chronicles 32:30 2 Chronicles 32:33 2 Chronicles
+33:13 2 Chronicles 34:15 2 Chronicles 34:18 2 Chronicles 34:28 2
+Chronicles 34:32 2 Chronicles 34:33 2 Chronicles 35:12 2 Chronicles 35:21
+2 Chronicles 35:24 2 Chronicles 36:4 2 Chronicles 36:23 Ezra 1:3 Ezra
+1:11 Ezra 2:2 Ezra 3:6 Ezra 3:11 Ezra 4:24 Ezra 6:12 Ezra 6:14 Ezra 7:28
+Ezra 9:10 Ezra 9:14 Ezra 10:5 Ezra 10:9 Ezra 10:16 Nehemiah 1:1 Nehemiah
+1:11 Nehemiah 2:1 Nehemiah 2:2 Nehemiah 2:6 Nehemiah 2:8 Nehemiah 2:9
+Nehemiah 2:18 Nehemiah 2:19 Nehemiah 3:2 Nehemiah 3:4 Nehemiah 3:8
+Nehemiah 3:10 Nehemiah 3:17 Nehemiah 3:23 Nehemiah 3:25 Nehemiah 3:29
+Nehemiah 3:30 Nehemiah 4:2 Nehemiah 4:18 Nehemiah 5:7 Nehemiah 5:8
+Nehemiah 5:12 Nehemiah 5:13 Nehemiah 6:2 Nehemiah 6:7 Nehemiah 6:9
+Nehemiah 6:11 Nehemiah 6:19 Nehemiah 7:5 Nehemiah 7:7 Nehemiah 7:70
+Nehemiah 8:6 Nehemiah 8:9 Nehemiah 8:17 Nehemiah 8:18 Nehemiah 9:10
+Nehemiah 11:4 Nehemiah 11:22 Nehemiah 11:30 Nehemiah 12:7 Nehemiah 12:42
+Nehemiah 13:11 Nehemiah 13:18 Nehemiah 13:21 Nehemiah 13:22 Nehemiah 13:26
+Nehemiah 13:31 Esther 1:18 Esther 2:4 Esther 2:15 Esther 3:2 Esther 3:15
+Esther 4:4 Esther 5:2 Esther 5:3 Esther 5:5 Esther 5:6 Esther 5:14 Esther
+6:3 Esther 6:4 Esther 6:5 Esther 6:6 Esther 6:12 Esther 6:13 Esther 7:2
+Esther 7:4 Esther 7:6 Esther 7:8 Esther 7:9 Esther 7:10 Esther 8:1 Esther
+8:2 Esther 8:4 Esther 8:6 Esther 8:14 Esther 8:17 Esther 9:12 Esther 9:26
+Job 1:5 Job 1:7 Job 1:10 Job 1:12 Job 2:2 Job 2:3 Job 2:9 Job 2:10 Job
+3:11 Job 3:12 Job 4:2 Job 4:7 Job 4:17 Job 4:21 Job 6:5 Job 6:6 Job 6:11
+Job 6:12 Job 6:13 Job 6:22 Job 6:23 Job 6:25 Job 6:30 Job 7:1 Job 7:4
+Job 7:17 Job 7:20 Job 7:21 Job 8:2 Job 8:3 Job 8:11 Job 9:12 Job 10:4
+Job 10:5 Job 10:15 Job 10:16 Job 10:18 Job 10:20 Job 11:2 Job 11:3 Job
+11:6 Job 11:7 Job 11:8 Job 12:11 Job 13:5 Job 13:7 Job 13:8 Job 13:9 Job
+13:11 Job 13:19 Job 13:23 Job 13:25 Job 14:4 Job 14:14 Job 15:3 Job 15:7
+Job 15:8 Job 15:9 Job 15:11 Job 15:12 Job 15:14 Job 15:23 Job 16:3 Job
+17:2 Job 17:15 Job 18:2 Job 18:4 Job 19:23 Job 21:4 Job 21:15 Job 21:17
+Job 21:22 Job 21:28 Job 21:29 Job 21:30 Job 21:31 Job 22:3 Job 22:4 Job
+22:5 Job 22:12 Job 22:13 Job 23:3 Job 23:6 Job 23:13 Job 25:3 Job 25:4
+Job 25:6 Job 26:2 Job 26:3 Job 26:4 Job 26:14 Job 27:10 Job 28:12 Job
+28:20 Job 30:25 Job 31:2 Job 31:3 Job 31:14 Job 31:15 Job 31:31 Job 31:35
+Job 31:40 Job 33:13 Job 34:6 Job 34:13 Job 34:17 Job 34:18 Job 34:19
+Job 34:29 Job 34:33 Job 35:3 Job 35:6 Job 35:7 Job 36:19 Job 36:23 Job
+37:20 Job 38:4 Job 38:5 Job 38:6 Job 38:16 Job 38:17 Job 38:18 Job 38:19
+Job 38:21 Job 38:22 Job 38:28 Job 38:29 Job 38:32 Job 38:33 Job 38:36
+Job 38:37 Job 38:39 Job 38:41 Job 39:1 Job 39:2 Job 39:5 Job 39:10 Job
+39:11 Job 39:13 Job 39:19 Job 39:20 Job 40:2 Job 40:4 Job 40:8 Job 40:9
+Job 41:1 Job 41:2 Job 41:3 Job 41:4 Job 41:5 Job 41:6 Job 41:7 Job 41:11
+Job 41:13 Job 41:14 Job 42:3 Psalms 2:12 Psalms 3:1 Psalms 3:2 Psalms
+3:4 Psalms 3:8 Psalms 4:2 Psalms 4:4 Psalms 4:6 Psalms 7:5 Psalms 8:1
+Psalms 8:4 Psalms 9:16 Psalms 9:20 Psalms 10:1 Psalms 10:13 Psalms 13:1
+Psalms 13:2 Psalms 14:1 Psalms 14:4 Psalms 14:7 Psalms 15:1 Psalms 15:4
+Psalms 15:5 Psalms 18:31 Psalms 19:4 Psalms 19:12 Psalms 21:2 Psalms
+22:1 Psalms 24:3 Psalms 24:6 Psalms 24:8 Psalms 24:10 Psalms 25:12
+Psalms 30:9 Psalms 30:12 Psalms 32:4 Psalms 32:5 Psalms 32:7 Psalms
+35:17 Psalms 36:7 Psalms 39:5 Psalms 39:7 Psalms 39:11 Psalms 41:13
+Psalms 42:5 Psalms 42:9 Psalms 42:11 Psalms 43:2 Psalms 43:5 Psalms 44:8
+Psalms 44:21 Psalms 44:23 Psalms 46:3 Psalms 46:11 Psalms 47:4 Psalms
+48:8 Psalms 49:13 Psalms 49:15 Psalms 50:6 Psalms 52:1 Psalms 52:3 Psalms
+52:5 Psalms 53:1 Psalms 53:4 Psalms 53:6 Psalms 54:3 Psalms 55:6 Psalms
+55:7 Psalms 55:19 Psalms 56:7 Psalms 57:3 Psalms 57:6 Psalms 58:1 Psalms
+59:5 Psalms 59:13 Psalms 60:4 Psalms 60:9 Psalms 60:10 Psalms 61:4 Psalms
+62:3 Psalms 62:4 Psalms 62:8 Psalms 66:3 Psalms 66:4 Psalms 66:7 Psalms
+66:15 Psalms 67:4 Psalms 68:16 Psalms 68:19 Psalms 68:35 Psalms 73:11
+Psalms 73:19 Psalms 73:25 Psalms 74:1 Psalms 74:10 Psalms 74:11 Psalms
+75:3 Psalms 76:3 Psalms 76:9 Psalms 77:3 Psalms 77:7 Psalms 77:8 Psalms
+77:9 Psalms 77:15 Psalms 78:20 Psalms 78:30 Psalms 79:5 Psalms 79:10
+Psalms 81:7 Psalms 82:2 Psalms 83:8 Psalms 84:4 Psalms 84:8 Psalms 84:10
+Psalms 85:2 Psalms 85:5 Psalms 87:3 Psalms 87:6 Psalms 88:7 Psalms 88:10
+Psalms 88:11 Psalms 88:12 Psalms 88:14 Psalms 89:4 Psalms 89:6 Psalms
+89:8 Psalms 89:37 Psalms 89:45 Psalms 89:46 Psalms 89:48 Psalms 89:52
+Psalms 90:11 Psalms 90:13 Psalms 92:5 Psalms 94:4 Psalms 94:9 Psalms
+94:10 Psalms 94:16 Psalms 95:7 Psalms 101:2 Psalms 104:1 Psalms 104:24
+Psalms 104:35 Psalms 105:45 Psalms 106:1 Psalms 106:2 Psalms 106:48 Psalms
+108:10 Psalms 108:11 Psalms 111:1 Psalms 112:1 Psalms 113:1 Psalms 113:9
+Psalms 114:5 Psalms 115:18 Psalms 116:19 Psalms 117:2 Psalms 119:9 Psalms
+119:84 Psalms 119:97 Psalms 120:3 Psalms 135:1 Psalms 135:21 Psalms 139:7
+Psalms 139:17 Psalms 139:21 Psalms 140:3 Psalms 140:5 Psalms 140:8 Psalms
+142:3 Psalms 143:6 Psalms 144:3 Psalms 146:1 Psalms 146:7 Psalms 146:10
+Psalms 147:20 Psalms 148:1 Psalms 148:14 Psalms 149:1 Psalms 149:9 Psalms
+150:1 Psalms 150:6 Proverbs 1:22 Proverbs 6:9 Proverbs 8:1 Proverbs 10:1
+Proverbs 14:22 Proverbs 16:16 Proverbs 19:7 Proverbs 22:29 Proverbs 23:5
+Proverbs 23:29 Proverbs 23:35 Proverbs 24:12 Proverbs 24:23 Proverbs
+25:16 Proverbs 26:12 Proverbs 29:20 Proverbs 30:4 Proverbs 30:9 Proverbs
+30:13 Proverbs 31:2 Proverbs 31:10 Ecclesiastes 1:10 Ecclesiastes 2:12
+Ecclesiastes 2:15 Ecclesiastes 2:16 Ecclesiastes 2:19 Ecclesiastes 2:21
+Ecclesiastes 2:23 Ecclesiastes 2:24 Ecclesiastes 2:26 Ecclesiastes 4:4
+Ecclesiastes 4:8 Ecclesiastes 4:16 Ecclesiastes 6:8 Ecclesiastes 6:12
+Ecclesiastes 7:10 Ecclesiastes 8:1 Ecclesiastes 11:8 Isaiah 1:5 Isaiah
+1:11 Isaiah 1:21 Isaiah 3:9 Isaiah 3:11 Isaiah 3:12 Isaiah 3:15 Isaiah
+5:1 Isaiah 5:4 Isaiah 5:25 Isaiah 6:5 Isaiah 6:8 Isaiah 6:11 Isaiah 7:2
+Isaiah 7:9 Isaiah 8:3 Isaiah 8:19 Isaiah 9:7 Isaiah 9:12 Isaiah 9:17
+Isaiah 9:21 Isaiah 10:3 Isaiah 10:4 Isaiah 10:9 Isaiah 10:15 Isaiah
+14:4 Isaiah 14:10 Isaiah 14:12 Isaiah 14:27 Isaiah 14:32 Isaiah 15:1
+Isaiah 17:1 Isaiah 19:1 Isaiah 19:12 Isaiah 20:2 Isaiah 21:1 Isaiah 21:2
+Isaiah 21:9 Isaiah 21:11 Isaiah 21:13 Isaiah 22:1 Isaiah 22:16 Isaiah 23:1
+Isaiah 23:7 Isaiah 24:16 Isaiah 26:19 Isaiah 27:4 Isaiah 27:7 Isaiah 28:9
+Isaiah 28:24 Isaiah 29:1 Isaiah 29:15 Isaiah 29:16 Isaiah 31:3 Isaiah
+33:1 Isaiah 33:14 Isaiah 33:18 Isaiah 36:2 Isaiah 36:10 Isaiah 36:12
+Isaiah 36:18 Isaiah 36:19 Isaiah 37:9 Isaiah 37:23 Isaiah 37:26 Isaiah
+38:1 Isaiah 38:3 Isaiah 38:8 Isaiah 38:15 Isaiah 39:3 Isaiah 39:4 Isaiah
+39:8 Isaiah 40:6 Isaiah 40:18 Isaiah 40:21 Isaiah 40:25 Isaiah 40:28
+Isaiah 41:2 Isaiah 41:4 Isaiah 41:26 Isaiah 42:16 Isaiah 42:19 Isaiah
+42:23 Isaiah 42:24 Isaiah 43:9 Isaiah 43:19 Isaiah 43:23 Isaiah 44:7
+Isaiah 44:8 Isaiah 44:19 Isaiah 45:6 Isaiah 45:9 Isaiah 45:10 Isaiah
+45:21 Isaiah 47:10 Isaiah 47:13 Isaiah 48:6 Isaiah 48:11 Isaiah 48:14
+Isaiah 48:18 Isaiah 49:9 Isaiah 49:15 Isaiah 49:18 Isaiah 49:21 Isaiah
+50:1 Isaiah 50:2 Isaiah 50:8 Isaiah 50:9 Isaiah 50:10 Isaiah 50:11 Isaiah
+51:9 Isaiah 51:13 Isaiah 51:19 Isaiah 52:5 Isaiah 53:1 Isaiah 53:8 Isaiah
+54:17 Isaiah 55:2 Isaiah 57:4 Isaiah 57:6 Isaiah 57:11 Isaiah 58:3 Isaiah
+58:5 Isaiah 58:6 Isaiah 58:7 Isaiah 58:9 Isaiah 59:19 Isaiah 63:1 Isaiah
+63:11 Isaiah 63:15 Isaiah 63:17 Isaiah 64:12 Isaiah 65:5 Isaiah 65:25
+Isaiah 66:1 Isaiah 66:3 Isaiah 66:8 Isaiah 66:9 Jeremiah 1:6 Jeremiah
+1:9 Jeremiah 1:11 Jeremiah 1:13 Jeremiah 2:8 Jeremiah 2:11 Jeremiah 2:14
+Jeremiah 2:18 Jeremiah 2:23 Jeremiah 2:24 Jeremiah 2:28 Jeremiah 2:29
+Jeremiah 2:31 Jeremiah 2:32 Jeremiah 2:33 Jeremiah 2:35 Jeremiah 2:36
+Jeremiah 3:1 Jeremiah 3:2 Jeremiah 3:5 Jeremiah 3:6 Jeremiah 3:7 Jeremiah
+3:19 Jeremiah 3:22 Jeremiah 4:10 Jeremiah 4:13 Jeremiah 4:14 Jeremiah
+4:19 Jeremiah 4:30 Jeremiah 4:31 Jeremiah 5:3 Jeremiah 5:7 Jeremiah
+5:9 Jeremiah 5:19 Jeremiah 5:22 Jeremiah 5:29 Jeremiah 6:4 Jeremiah
+6:10 Jeremiah 6:15 Jeremiah 6:16 Jeremiah 6:17 Jeremiah 6:20 Jeremiah
+7:11 Jeremiah 7:19 Jeremiah 8:4 Jeremiah 8:5 Jeremiah 8:6 Jeremiah 8:8
+Jeremiah 8:12 Jeremiah 8:14 Jeremiah 8:19 Jeremiah 8:22 Jeremiah 9:2
+Jeremiah 9:9 Jeremiah 9:12 Jeremiah 9:19 Jeremiah 10:5 Jeremiah 10:7
+Jeremiah 10:19 Jeremiah 11:5 Jeremiah 11:15 Jeremiah 12:1 Jeremiah 12:4
+Jeremiah 12:5 Jeremiah 13:21 Jeremiah 13:22 Jeremiah 13:23 Jeremiah 13:27
+Jeremiah 14:9 Jeremiah 14:13 Jeremiah 14:18 Jeremiah 14:19 Jeremiah 14:22
+Jeremiah 15:2 Jeremiah 15:5 Jeremiah 15:10 Jeremiah 15:18 Jeremiah 16:10
+Jeremiah 18:6 Jeremiah 18:14 Jeremiah 18:18 Jeremiah 18:20 Jeremiah 20:3
+Jeremiah 20:9 Jeremiah 20:10 Jeremiah 21:13 Jeremiah 22:15 Jeremiah 22:16
+Jeremiah 22:18 Jeremiah 22:21 Jeremiah 22:28 Jeremiah 23:18 Jeremiah 23:24
+Jeremiah 23:26 Jeremiah 23:28 Jeremiah 23:29 Jeremiah 23:33 Jeremiah 23:35
+Jeremiah 23:37 Jeremiah 24:3 Jeremiah 25:29 Jeremiah 26:9 Jeremiah 26:19
+Jeremiah 28:11 Jeremiah 30:6 Jeremiah 30:7 Jeremiah 30:15 Jeremiah 30:21
+Jeremiah 31:20 Jeremiah 31:22 Jeremiah 32:8 Jeremiah 32:17 Jeremiah 33:11
+Jeremiah 33:24 Jeremiah 35:13 Jeremiah 36:14 Jeremiah 36:15 Jeremiah 36:21
+Jeremiah 37:14 Jeremiah 37:17 Jeremiah 37:21 Jeremiah 38:6 Jeremiah 38:12
+Jeremiah 38:15 Jeremiah 38:20 Jeremiah 38:27 Jeremiah 40:4 Jeremiah 40:5
+Jeremiah 40:14 Jeremiah 41:8 Jeremiah 45:3 Jeremiah 45:5 Jeremiah 46:5
+Jeremiah 46:15 Jeremiah 47:6 Jeremiah 47:7 Jeremiah 48:1 Jeremiah 48:2
+Jeremiah 48:27 Jeremiah 48:39 Jeremiah 48:46 Jeremiah 48:47 Jeremiah 49:1
+Jeremiah 49:4 Jeremiah 49:7 Jeremiah 49:9 Jeremiah 49:12 Jeremiah 49:19
+Jeremiah 49:23 Jeremiah 50:27 Jeremiah 50:44 Jeremiah 51:41 Jeremiah
+51:64 Jeremiah 52:1 Jeremiah 52:22 Jeremiah 52:27 Lamentations 1:1
+Lamentations 1:9 Lamentations 1:12 Lamentations 2:12 Lamentations 2:13
+Lamentations 2:20 Lamentations 4:1 Ezekiel 1:5 Ezekiel 1:28 Ezekiel 2:4
+Ezekiel 3:3 Ezekiel 3:6 Ezekiel 4:3 Ezekiel 4:14 Ezekiel 5:15 Ezekiel
+5:17 Ezekiel 6:11 Ezekiel 8:5 Ezekiel 8:6 Ezekiel 8:12 Ezekiel 8:17
+Ezekiel 9:3 Ezekiel 9:6 Ezekiel 9:7 Ezekiel 10:2 Ezekiel 10:15 Ezekiel
+11:13 Ezekiel 11:24 Ezekiel 13:18 Ezekiel 15:3 Ezekiel 15:4 Ezekiel
+16:20 Ezekiel 16:23 Ezekiel 17:9 Ezekiel 17:10 Ezekiel 17:12 Ezekiel
+17:15 Ezekiel 18:13 Ezekiel 18:19 Ezekiel 18:20 Ezekiel 18:23 Ezekiel
+18:24 Ezekiel 18:25 Ezekiel 18:29 Ezekiel 18:30 Ezekiel 19:2 Ezekiel
+19:14 Ezekiel 20:3 Ezekiel 20:4 Ezekiel 20:29 Ezekiel 20:30 Ezekiel
+20:31 Ezekiel 20:49 Ezekiel 21:7 Ezekiel 21:10 Ezekiel 21:13 Ezekiel
+21:30 Ezekiel 22:2 Ezekiel 22:14 Ezekiel 23:4 Ezekiel 23:36 Ezekiel
+24:6 Ezekiel 24:9 Ezekiel 28:9 Ezekiel 31:18 Ezekiel 32:19 Ezekiel 33:5
+Ezekiel 33:20 Ezekiel 34:2 Ezekiel 34:18 Ezekiel 37:3 Ezekiel 38:13
+Ezekiel 39:16 Ezekiel 43:12 Ezekiel 45:1 Ezekiel 47:4 Ezekiel 47:6
+Ezekiel 47:17 Ezekiel 47:18 Ezekiel 47:19 Ezekiel 47:20 Ezekiel 48:1
+Daniel 1:10 Daniel 2:2 Daniel 2:15 Daniel 2:19 Daniel 2:28 Daniel 2:31
+Daniel 2:38 Daniel 3:13 Daniel 3:24 Daniel 3:26 Daniel 4:3 Daniel 4:18
+Daniel 4:19 Daniel 5:7 Daniel 5:13 Daniel 6:12 Daniel 6:16 Daniel 6:23
+Daniel 7:16 Daniel 7:28 Daniel 10:11 Daniel 10:17 Daniel 10:19 Daniel
+10:20 Daniel 11:2 Hosea 1:2 Hosea 1:6 Hosea 6:4 Hosea 7:13 Hosea 8:1
+Hosea 9:14 Hosea 11:8 Hosea 12:11 Hosea 13:10 Hosea 14:8 Hosea 14:9
+Joel 1:2 Joel 1:15 Joel 1:18 Joel 3:4 Obadiah 1:1 Obadiah 1:5 Obadiah
+1:6 Jonah 1:5 Jonah 1:6 Jonah 1:7 Jonah 1:8 Jonah 1:10 Jonah 1:11 Jonah
+1:17 Jonah 2:9 Jonah 3:3 Jonah 4:2 Jonah 4:6 Jonah 4:9 Micah 1:5 Micah
+2:1 Micah 2:4 Micah 2:7 Micah 3:11 Micah 4:9 Micah 6:3 Micah 6:6 Micah
+6:7 Micah 7:1 Micah 7:10 Micah 7:18 Nahum 1:1 Nahum 1:6 Nahum 1:9 Nahum
+1:12 Nahum 1:15 Nahum 2:8 Nahum 3:1 Nahum 3:7 Habakkuk 1:2 Habakkuk
+1:3 Habakkuk 1:12 Habakkuk 2:6 Habakkuk 2:19 Habakkuk 3:3 Habakkuk 3:8
+Habakkuk 3:9 Habakkuk 3:13 Habakkuk 3:19 Zephaniah 2:5 Zephaniah 2:15
+Haggai 1:9 Haggai 2:3 Haggai 2:12 Haggai 2:13 Haggai 2:19 Zechariah 1:5
+Zechariah 1:6 Zechariah 1:9 Zechariah 1:19 Zechariah 1:21 Zechariah 2:2
+Zechariah 3:4 Zechariah 3:5 Zechariah 4:2 Zechariah 4:5 Zechariah 4:7
+Zechariah 4:10 Zechariah 4:13 Zechariah 5:2 Zechariah 5:6 Zechariah 5:8
+Zechariah 6:7 Zechariah 6:15 Zechariah 7:14 Zechariah 8:6 Zechariah 9:17
+Zechariah 11:7 Zechariah 11:12 Zechariah 11:13 Zechariah 11:17 Zechariah
+13:6 Malachi 1:2 Malachi 1:6 Malachi 1:7 Malachi 1:8 Malachi 1:9 Malachi
+1:10 Malachi 1:13 Malachi 2:10 Malachi 2:14 Malachi 2:15 Malachi 2:17
+Malachi 3:2 Malachi 3:7 Malachi 3:8 Malachi 3:13 Matthew 2:2 Matthew
+3:15 Matthew 5:13 Matthew 5:14 Matthew 5:46 Matthew 5:47 Matthew 6:2
+Matthew 6:5 Matthew 6:10 Matthew 6:13 Matthew 6:16 Matthew 6:23 Matthew
+6:24 Matthew 6:25 Matthew 6:26 Matthew 6:28 Matthew 6:31 Matthew 6:34
+Matthew 7:16 Matthew 7:22 Matthew 8:3 Matthew 8:13 Matthew 8:26 Matthew
+8:29 Matthew 8:32 Matthew 9:9 Matthew 9:15 Matthew 9:24 Matthew 9:28
+Matthew 10:25 Matthew 10:29 Matthew 11:7 Matthew 11:8 Matthew 11:9
+Matthew 11:16 Matthew 11:19 Matthew 11:21 Matthew 12:10 Matthew 12:12
+Matthew 12:13 Matthew 12:27 Matthew 12:29 Matthew 12:34 Matthew 12:45
+Matthew 12:48 Matthew 13:19 Matthew 13:27 Matthew 13:28 Matthew 13:43
+Matthew 13:51 Matthew 13:55 Matthew 13:56 Matthew 13:57 Matthew 14:29
+Matthew 15:2 Matthew 15:6 Matthew 15:14 Matthew 15:23 Matthew 15:28
+Matthew 15:34 Matthew 16:4 Matthew 16:26 Matthew 17:12 Matthew 17:17
+Matthew 17:23 Matthew 17:25 Matthew 17:26 Matthew 18:7 Matthew 18:12
+Matthew 18:21 Matthew 19:6 Matthew 19:12 Matthew 19:17 Matthew 19:18
+Matthew 20:4 Matthew 20:7 Matthew 20:15 Matthew 20:21 Matthew 20:22
+Matthew 21:16 Matthew 21:19 Matthew 21:23 Matthew 21:25 Matthew 21:27
+Matthew 21:28 Matthew 21:30 Matthew 21:31 Matthew 22:12 Matthew 22:17
+Matthew 22:19 Matthew 22:21 Matthew 22:28 Matthew 22:32 Matthew 22:42
+Matthew 23:13 Matthew 23:14 Matthew 23:15 Matthew 23:23 Matthew 23:25
+Matthew 23:27 Matthew 23:29 Matthew 24:2 Matthew 24:3 Matthew 25:37
+Matthew 25:38 Matthew 26:10 Matthew 26:15 Matthew 26:24 Matthew 26:25
+Matthew 26:35 Matthew 26:50 Matthew 26:55 Matthew 26:56 Matthew 26:60
+Matthew 26:62 Matthew 26:63 Matthew 26:65 Matthew 26:66 Matthew 26:74
+Matthew 26:75 Matthew 27:4 Matthew 27:11 Matthew 27:17 Matthew 27:21
+Matthew 27:22 Matthew 27:23 Matthew 27:40 Matthew 27:42 Matthew 27:46
+Matthew 27:58 Matthew 28:6 Matthew 28:9 Matthew 28:20 Mark 1:24 Mark
+1:27 Mark 2:7 Mark 2:14 Mark 2:19 Mark 3:4 Mark 3:5 Mark 4:13 Mark 4:21
+Mark 4:30 Mark 4:36 Mark 4:39 Mark 4:40 Mark 5:7 Mark 5:9 Mark 5:13 Mark
+5:14 Mark 5:39 Mark 5:40 Mark 5:42 Mark 6:2 Mark 6:3 Mark 6:6 Mark 6:11
+Mark 6:15 Mark 6:24 Mark 6:37 Mark 6:38 Mark 6:50 Mark 7:4 Mark 7:18
+Mark 8:5 Mark 8:12 Mark 8:17 Mark 8:18 Mark 8:19 Mark 8:20 Mark 8:29
+Mark 8:32 Mark 9:19 Mark 9:21 Mark 9:50 Mark 10:2 Mark 10:18 Mark 10:24
+Mark 10:32 Mark 10:38 Mark 10:39 Mark 10:49 Mark 10:51 Mark 10:52 Mark
+11:3 Mark 11:14 Mark 11:17 Mark 11:28 Mark 11:30 Mark 11:33 Mark 12:1
+Mark 12:9 Mark 12:15 Mark 12:16 Mark 12:17 Mark 12:23 Mark 12:31 Mark
+12:34 Mark 12:37 Mark 13:2 Mark 13:4 Mark 14:5 Mark 14:6 Mark 14:11 Mark
+14:19 Mark 14:21 Mark 14:31 Mark 14:37 Mark 14:38 Mark 14:60 Mark 14:61
+Mark 14:64 Mark 14:68 Mark 14:70 Mark 14:72 Mark 15:2 Mark 15:4 Mark
+15:14 Mark 15:32 Mark 15:34 Mark 16:20 Luke 1:18 Luke 1:38 Luke 1:63
+Luke 1:66 Luke 2:48 Luke 2:49 Luke 3:14 Luke 4:2 Luke 4:17 Luke 4:20
+Luke 4:22 Luke 4:34 Luke 4:35 Luke 4:36 Luke 4:38 Luke 4:41 Luke 5:3
+Luke 5:7 Luke 5:10 Luke 5:13 Luke 5:21 Luke 6:8 Luke 6:9 Luke 6:10 Luke
+6:21 Luke 6:24 Luke 6:25 Luke 6:26 Luke 6:32 Luke 6:33 Luke 6:34 Luke
+6:38 Luke 6:39 Luke 6:42 Luke 6:44 Luke 7:6 Luke 7:14 Luke 7:15 Luke
+7:19 Luke 7:20 Luke 7:24 Luke 7:25 Luke 7:26 Luke 7:31 Luke 7:36 Luke
+7:40 Luke 7:42 Luke 7:43 Luke 7:44 Luke 8:8 Luke 8:22 Luke 8:24 Luke
+8:25 Luke 8:28 Luke 8:29 Luke 8:30 Luke 8:32 Luke 8:39 Luke 8:42 Luke
+8:45 Luke 9:9 Luke 9:10 Luke 9:13 Luke 9:14 Luke 9:20 Luke 9:36 Luke
+9:41 Luke 9:42 Luke 9:43 Luke 9:56 Luke 9:59 Luke 10:7 Luke 10:13 Luke
+10:26 Luke 10:37 Luke 10:40 Luke 11:2 Luke 11:4 Luke 11:11 Luke 11:14
+Luke 11:18 Luke 11:19 Luke 11:42 Luke 11:43 Luke 11:44 Luke 11:46 Luke
+11:47 Luke 11:52 Luke 12:7 Luke 12:48 Luke 12:51 Luke 13:18 Luke 13:23
+Luke 14:4 Luke 14:18 Luke 14:21 Luke 14:35 Luke 15:12 Luke 15:20 Luke
+15:24 Luke 16:2 Luke 16:3 Luke 16:6 Luke 16:7 Luke 16:13 Luke 17:9 Luke
+17:14 Luke 17:17 Luke 17:21 Luke 17:37 Luke 18:8 Luke 18:19 Luke 18:41
+Luke 19:22 Luke 19:31 Luke 19:42 Luke 19:47 Luke 20:2 Luke 20:13 Luke
+20:15 Luke 20:16 Luke 20:24 Luke 20:33 Luke 21:7 Luke 21:23 Luke 22:27
+Luke 22:35 Luke 22:38 Luke 22:46 Luke 22:51 Luke 22:54 Luke 22:58 Luke
+22:60 Luke 22:61 Luke 22:67 Luke 22:70 Luke 22:71 Luke 23:3 Luke 23:22
+Luke 23:23 Luke 23:34 Luke 23:35 Luke 24:19 Luke 24:29 Luke 24:38 Luke
+24:53 John 1:21 John 1:22 John 1:38 John 1:39 John 1:42 John 1:46 John
+1:48 John 1:50 John 2:4 John 2:7 John 2:8 John 3:4 John 4:6 John 4:9
+John 4:17 John 4:27 John 4:35 John 4:46 John 4:50 John 4:52 John 5:23
+John 5:37 John 6:10 John 6:17 John 6:30 John 6:42 John 6:45 John 6:64
+John 6:68 John 7:4 John 7:19 John 7:26 John 7:35 John 7:41 John 7:52
+John 8:6 John 8:11 John 8:19 John 8:22 John 8:25 John 8:39 John 8:41
+John 8:43 John 8:44 John 8:46 John 8:52 John 8:53 John 9:12 John 9:15
+John 9:16 John 9:17 John 9:19 John 9:26 John 9:27 John 9:34 John 9:38
+John 10:18 John 10:21 John 10:24 John 11:9 John 11:26 John 11:34 John
+11:38 John 11:39 John 11:41 John 11:44 John 11:47 John 12:19 John 12:27
+John 12:28 John 12:34 John 12:35 John 12:36 John 12:38 John 13:8 John
+13:26 John 13:27 John 13:33 John 13:36 John 13:37 John 13:38 John 14:2
+John 14:9 John 14:10 John 14:27 John 14:28 John 14:31 John 15:4 John
+15:20 John 16:4 John 16:18 John 16:23 John 16:33 John 17:11 John 18:5
+John 18:7 John 18:10 John 18:16 John 18:17 John 18:21 John 18:25 John
+18:31 John 18:35 John 18:37 John 18:38 John 18:40 John 19:3 John 19:5
+John 19:6 John 19:9 John 19:10 John 19:15 John 19:16 John 19:19 John
+19:24 John 19:27 John 19:38 John 20:13 John 20:15 John 20:16 John 20:20
+John 20:25 John 21:3 John 21:5 John 21:6 John 21:7 John 21:12 John 21:15
+John 21:16 John 21:17 John 21:19 John 21:22 John 21:25 Acts 1:11 Acts
+2:47 Acts 3:12 Acts 4:16 Acts 5:4 Acts 5:8 Acts 5:9 Acts 5:21 Acts 5:28
+Acts 7:32 Acts 7:34 Acts 7:35 Acts 7:49 Acts 7:52 Acts 7:60 Acts 8:1 Acts
+8:31 Acts 8:33 Acts 8:34 Acts 8:37 Acts 9:5 Acts 9:6 Acts 9:10 Acts 9:19
+Acts 9:24 Acts 9:34 Acts 9:39 Acts 9:40 Acts 10:4 Acts 10:23 Acts 10:24
+Acts 10:33 Acts 10:46 Acts 10:48 Acts 11:12 Acts 11:26 Acts 12:3 Acts
+12:7 Acts 12:8 Acts 12:15 Acts 12:17 Acts 12:19 Acts 13:11 Acts 13:25
+Acts 14:10 Acts 14:15 Acts 15:29 Acts 16:15 Acts 16:18 Acts 16:37 Acts
+17:18 Acts 17:23 Acts 18:17 Acts 18:21 Acts 19:2 Acts 19:3 Acts 19:33
+Acts 20:3 Acts 20:38 Acts 21:13 Acts 21:22 Acts 21:37 Acts 21:40 Acts
+22:8 Acts 22:10 Acts 22:13 Acts 22:16 Acts 22:27 Acts 22:28 Acts 23:30
+Acts 23:34 Acts 23:35 Acts 25:11 Acts 25:12 Acts 25:22 Acts 26:1 Acts
+26:7 Acts 26:14 Acts 26:15 Acts 26:27 Acts 27:3 Acts 27:44 Romans 1:25
+Romans 2:21 Romans 2:22 Romans 3:1 Romans 3:3 Romans 3:5 Romans 3:8
+Romans 3:9 Romans 3:27 Romans 3:29 Romans 3:31 Romans 4:3 Romans 4:9
+Romans 4:10 Romans 5:15 Romans 5:20 Romans 6:1 Romans 6:2 Romans 6:15
+Romans 6:21 Romans 7:7 Romans 7:8 Romans 7:13 Romans 7:24 Romans 7:25
+Romans 8:9 Romans 8:31 Romans 8:33 Romans 8:34 Romans 8:35 Romans 9:5
+Romans 9:6 Romans 9:14 Romans 9:19 Romans 9:20 Romans 9:30 Romans 9:32
+Romans 10:6 Romans 10:7 Romans 10:8 Romans 10:14 Romans 10:15 Romans 10:16
+Romans 10:18 Romans 10:19 Romans 11:1 Romans 11:2 Romans 11:4 Romans 11:6
+Romans 11:7 Romans 11:11 Romans 11:18 Romans 11:20 Romans 11:33 Romans
+11:34 Romans 11:36 Romans 12:9 Romans 12:16 Romans 12:17 Romans 13:1
+Romans 13:3 Romans 13:4 Romans 14:4 Romans 14:5 Romans 14:6 Romans 14:10
+Romans 14:15 Romans 14:20 Romans 14:22 Romans 15:27 Romans 15:33 Romans
+16:5 Romans 16:10 Romans 16:11 Romans 16:12 Romans 16:16 Romans 16:19
+Romans 16:20 Romans 16:23 Romans 16:24 Romans 16:27 1 Corinthians 1:13 1
+Corinthians 1:20 1 Corinthians 2:11 1 Corinthians 2:16 1 Corinthians 3:10
+1 Corinthians 3:18 1 Corinthians 3:19 1 Corinthians 3:21 1 Corinthians 4:7
+1 Corinthians 4:21 1 Corinthians 5:6 1 Corinthians 5:7 1 Corinthians 5:12
+1 Corinthians 5:13 1 Corinthians 6:2 1 Corinthians 6:3 1 Corinthians 6:5 1
+Corinthians 6:7 1 Corinthians 6:9 1 Corinthians 6:13 1 Corinthians 6:15 1
+Corinthians 6:16 1 Corinthians 6:18 1 Corinthians 6:19 1 Corinthians 7:7
+1 Corinthians 7:15 1 Corinthians 7:16 1 Corinthians 7:17 1 Corinthians
+7:18 1 Corinthians 7:21 1 Corinthians 7:27 1 Corinthians 7:28 1
+Corinthians 7:32 1 Corinthians 7:34 1 Corinthians 8:1 1 Corinthians 9:1
+1 Corinthians 9:7 1 Corinthians 9:8 1 Corinthians 9:9 1 Corinthians 9:10
+1 Corinthians 9:12 1 Corinthians 9:13 1 Corinthians 9:18 1 Corinthians
+9:24 1 Corinthians 9:25 1 Corinthians 10:16 1 Corinthians 10:19 1
+Corinthians 10:22 1 Corinthians 11:22 1 Corinthians 11:34 1 Corinthians
+12:17 1 Corinthians 12:29 1 Corinthians 12:30 1 Corinthians 14:9 1
+Corinthians 14:15 1 Corinthians 14:26 1 Corinthians 14:36 1 Corinthians
+15:27 1 Corinthians 15:29 1 Corinthians 15:32 1 Corinthians 15:35 1
+Corinthians 15:42 1 Corinthians 15:44 1 Corinthians 15:55 1 Corinthians
+16:19 1 Corinthians 16:20 1 Corinthians 16:24 2 Corinthians 1:17 2
+Corinthians 2:16 2 Corinthians 3:1 2 Corinthians 6:14 2 Corinthians 6:15
+2 Corinthians 6:16 2 Corinthians 7:11 2 Corinthians 10:7 2 Corinthians
+11:11 2 Corinthians 11:21 2 Corinthians 11:22 2 Corinthians 11:23 2
+Corinthians 11:29 2 Corinthians 12:1 2 Corinthians 12:9 2 Corinthians
+12:13 2 Corinthians 12:18 2 Corinthians 12:19 2 Corinthians 13:1 2
+Corinthians 13:4 2 Corinthians 13:5 2 Corinthians 13:11 2 Corinthians
+13:14 Galatians 1:5 Galatians 1:10 Galatians 2:17 Galatians 3:3 Galatians
+3:4 Galatians 3:16 Galatians 3:19 Galatians 3:21 Galatians 4:15 Galatians
+4:30 Galatians 5:11 Galatians 6:18 Ephesians 3:21 Ephesians 5:28 Ephesians
+6:24 Philippians 1:18 Philippians 3:1 Philippians 3:4 Philippians
+4:5 Philippians 4:20 Philippians 4:21 Philippians 4:23 Colossians 4:9
+Colossians 4:11 Colossians 4:18 1 Thessalonians 2:19 1 Thessalonians
+5:13 1 Thessalonians 5:28 2 Thessalonians 3:16 2 Thessalonians 3:18 1
+Timothy 1:17 1 Timothy 5:18 1 Timothy 6:2 1 Timothy 6:16 1 Timothy 6:21
+2 Timothy 2:19 2 Timothy 4:11 2 Timothy 4:18 2 Timothy 4:21 2 Timothy
+4:22 Titus 1:13 Titus 2:15 Titus 3:8 Titus 3:15 Hebrews 1:5 Hebrews 2:6
+Hebrews 2:8 Hebrews 2:13 Hebrews 3:17 Hebrews 8:13 Hebrews 10:2 Hebrews
+10:9 Hebrews 10:30 Hebrews 11:32 Hebrews 12:25 Hebrews 13:9 Hebrews 13:21
+Hebrews 13:24 Hebrews 13:25 James 1:6 James 2:6 James 2:11 James 2:14
+James 3:2 James 3:5 James 3:10 James 3:12 James 3:13 James 4:1 James 4:4
+James 4:6 James 4:7 James 4:8 James 4:11 James 4:14 James 5:3 James 5:11
+James 5:13 James 5:14 James 5:16 1 Peter 1:24 1 Peter 1:25 1 Peter 2:17
+1 Peter 2:20 1 Peter 4:11 1 Peter 5:5 1 Peter 5:11 1 Peter 5:14 2 Peter
+2:10 2 Peter 2:13 2 Peter 3:4 2 Peter 3:18 1 John 2:1 1 John 2:7 1 John
+2:13 1 John 2:14 1 John 2:15 1 John 2:22 1 John 2:24 1 John 3:8 1 John
+3:12 1 John 3:14 1 John 4:6 1 John 4:12 1 John 4:16 1 John 4:18 1 John
+5:6 1 John 5:16 1 John 5:20 1 John 5:21 2 John 1:6 2 John 1:7 2 John 1:9
+2 John 1:13 3 John 1:11 3 John 1:14 Jude 1:11 Jude 1:25 Revelation 1:5
+Revelation 1:6 Revelation 1:7 Revelation 1:12 Revelation 1:17 Revelation
+1:20 Revelation 3:3 Revelation 5:14 Revelation 6:5 Revelation 6:8
+Revelation 7:5 Revelation 7:6 Revelation 7:7 Revelation 7:8 Revelation
+7:12 Revelation 7:13 Revelation 7:14 Revelation 10:9 Revelation 11:12
+Revelation 12:12 Revelation 13:4 Revelation 13:10 Revelation 13:18
+Revelation 14:4 Revelation 15:4 Revelation 16:15 Revelation 17:7
+Revelation 17:9 Revelation 18:10 Revelation 18:17 Revelation 18:19
+Revelation 19:3 Revelation 19:9 Revelation 19:10 Revelation 19:20
+Revelation 20:5 Revelation 20:14 Revelation 21:5 Revelation 21:6
+Revelation 21:16 Revelation 21:19 Revelation 22:8 Revelation 22:16
+Revelation 22:17 Revelation 22:20 Revelation 22:21 1 Nephi 1:13 1 Nephi
+1:14 1 Nephi 1:17 1 Nephi 1:20 1 Nephi 2:4 1 Nephi 2:11 1 Nephi 2:12 1
+Nephi 2:13 1 Nephi 2:14 1 Nephi 2:17 1 Nephi 3:11 1 Nephi 3:13 1 Nephi
+3:14 1 Nephi 3:16 1 Nephi 3:18 1 Nephi 3:28 1 Nephi 3:29 1 Nephi 3:31
+1 Nephi 4:3 1 Nephi 4:5 1 Nephi 4:10 1 Nephi 4:11 1 Nephi 4:13 1 Nephi
+4:20 1 Nephi 4:28 1 Nephi 4:34 1 Nephi 4:35 1 Nephi 5:8 1 Nephi 5:16 1
+Nephi 5:19 1 Nephi 7:12 1 Nephi 7:14 1 Nephi 7:15 1 Nephi 7:16 1 Nephi
+7:21 1 Nephi 7:22 1 Nephi 8:11 1 Nephi 8:33 1 Nephi 9:6 1 Nephi 10:8
+1 Nephi 10:11 1 Nephi 11:6 1 Nephi 11:8 1 Nephi 11:12 1 Nephi 11:13 1
+Nephi 11:21 1 Nephi 11:27 1 Nephi 11:29 1 Nephi 11:30 1 Nephi 11:31 1
+Nephi 11:32 1 Nephi 11:35 1 Nephi 11:36 1 Nephi 12:1 1 Nephi 12:9 1 Nephi
+12:10 1 Nephi 12:11 1 Nephi 12:18 1 Nephi 13:1 1 Nephi 13:2 1 Nephi 13:23
+1 Nephi 14:8 1 Nephi 14:30 1 Nephi 15:10 1 Nephi 15:15 1 Nephi 15:20 1
+Nephi 15:21 1 Nephi 15:36 1 Nephi 16:8 1 Nephi 16:10 1 Nephi 16:14 1 Nephi
+16:32 1 Nephi 16:38 1 Nephi 17:1 1 Nephi 17:3 1 Nephi 17:5 1 Nephi 17:7
+1 Nephi 17:22 1 Nephi 17:33 1 Nephi 17:34 1 Nephi 17:35 1 Nephi 17:41
+1 Nephi 17:45 1 Nephi 17:46 1 Nephi 17:50 1 Nephi 17:55 1 Nephi 18:15
+1 Nephi 18:21 1 Nephi 18:24 1 Nephi 18:25 1 Nephi 19:1 1 Nephi 19:4 1
+Nephi 19:6 1 Nephi 19:7 1 Nephi 19:9 1 Nephi 19:12 1 Nephi 20:3 1 Nephi
+20:6 1 Nephi 20:13 1 Nephi 20:14 1 Nephi 21:1 1 Nephi 21:6 1 Nephi 21:9
+1 Nephi 21:15 1 Nephi 21:18 1 Nephi 21:21 1 Nephi 22:1 1 Nephi 22:4 1
+Nephi 22:17 1 Nephi 22:22 1 Nephi 22:31 2 Nephi 1:5 2 Nephi 1:7 2 Nephi
+1:9 2 Nephi 1:14 2 Nephi 1:19 2 Nephi 1:23 2 Nephi 1:27 2 Nephi 1:28
+2 Nephi 2:1 2 Nephi 2:3 2 Nephi 2:5 2 Nephi 2:11 2 Nephi 2:12 2 Nephi
+2:13 2 Nephi 2:16 2 Nephi 2:21 2 Nephi 2:22 2 Nephi 2:26 2 Nephi 2:27 2
+Nephi 2:30 2 Nephi 3:1 2 Nephi 3:4 2 Nephi 3:5 2 Nephi 3:7 2 Nephi 3:8 2
+Nephi 3:14 2 Nephi 3:15 2 Nephi 3:17 2 Nephi 3:18 2 Nephi 3:19 2 Nephi
+3:20 2 Nephi 3:25 2 Nephi 4:2 2 Nephi 4:11 2 Nephi 4:12 2 Nephi 4:15 2
+Nephi 4:17 2 Nephi 4:25 2 Nephi 4:27 2 Nephi 4:28 2 Nephi 4:29 2 Nephi
+4:31 2 Nephi 4:32 2 Nephi 4:33 2 Nephi 4:34 2 Nephi 4:35 2 Nephi 5:3
+2 Nephi 5:4 2 Nephi 5:6 2 Nephi 5:7 2 Nephi 5:11 2 Nephi 5:16 2 Nephi
+5:18 2 Nephi 5:19 2 Nephi 5:20 2 Nephi 5:21 2 Nephi 5:23 2 Nephi 5:32 2
+Nephi 6:3 2 Nephi 6:4 2 Nephi 6:5 2 Nephi 6:8 2 Nephi 6:9 2 Nephi 6:10 2
+Nephi 6:13 2 Nephi 6:15 2 Nephi 7:1 2 Nephi 7:2 2 Nephi 7:4 2 Nephi 7:6 2
+Nephi 7:7 2 Nephi 7:8 2 Nephi 7:9 2 Nephi 7:11 2 Nephi 8:1 2 Nephi 8:3 2
+Nephi 8:5 2 Nephi 8:6 2 Nephi 8:8 2 Nephi 8:9 2 Nephi 8:12 2 Nephi 8:13
+2 Nephi 9:7 2 Nephi 9:8 2 Nephi 9:13 2 Nephi 9:17 2 Nephi 9:19 2 Nephi
+9:20 2 Nephi 9:28 2 Nephi 9:30 2 Nephi 9:39 2 Nephi 9:40 2 Nephi 9:41 2
+Nephi 9:44 2 Nephi 9:47 2 Nephi 9:51 2 Nephi 9:52 2 Nephi 9:54 2 Nephi
+10:22 2 Nephi 10:25 2 Nephi 11:2 2 Nephi 11:3 2 Nephi 11:7 2 Nephi 11:8 2
+Nephi 13:9 2 Nephi 13:12 2 Nephi 13:15 2 Nephi 15:1 2 Nephi 15:4 2 Nephi
+15:25 2 Nephi 16:5 2 Nephi 16:8 2 Nephi 16:11 2 Nephi 17:2 2 Nephi 17:9
+2 Nephi 18:3 2 Nephi 19:7 2 Nephi 19:12 2 Nephi 19:17 2 Nephi 19:21 2
+Nephi 20:3 2 Nephi 20:4 2 Nephi 20:9 2 Nephi 20:15 2 Nephi 23:22 2 Nephi
+24:2 2 Nephi 24:10 2 Nephi 24:12 2 Nephi 24:32 2 Nephi 25:1 2 Nephi 25:4
+2 Nephi 25:13 2 Nephi 25:17 2 Nephi 25:20 2 Nephi 25:27 2 Nephi 25:28
+2 Nephi 26:7 2 Nephi 26:24 2 Nephi 26:26 2 Nephi 26:27 2 Nephi 26:28 2
+Nephi 26:30 2 Nephi 27:5 2 Nephi 27:8 2 Nephi 27:10 2 Nephi 27:15 2 Nephi
+27:27 2 Nephi 28:16 2 Nephi 28:28 2 Nephi 28:32 2 Nephi 29:3 2 Nephi
+29:4 2 Nephi 29:5 2 Nephi 29:6 2 Nephi 29:7 2 Nephi 29:8 2 Nephi 29:9 2
+Nephi 29:14 2 Nephi 30:1 2 Nephi 30:3 2 Nephi 30:9 2 Nephi 30:18 2 Nephi
+31:1 2 Nephi 31:3 2 Nephi 31:7 2 Nephi 31:10 2 Nephi 31:15 2 Nephi 31:17
+2 Nephi 31:19 2 Nephi 31:20 2 Nephi 31:21 2 Nephi 32:1 2 Nephi 32:3 2
+Nephi 32:6 2 Nephi 32:8 2 Nephi 33:3 2 Nephi 33:4 2 Nephi 33:9 2 Nephi
+33:10 2 Nephi 33:15 Jacob 1:11 Jacob 2:11 Jacob 2:14 Jacob 2:16 Jacob
+2:21 Jacob 2:22 Jacob 2:23 Jacob 2:28 Jacob 2:35 Jacob 3:1 Jacob 3:14
+Jacob 4:5 Jacob 4:8 Jacob 4:9 Jacob 4:10 Jacob 4:13 Jacob 4:14 Jacob 5:16
+Jacob 5:17 Jacob 5:18 Jacob 5:20 Jacob 5:21 Jacob 5:23 Jacob 5:25 Jacob
+5:29 Jacob 5:31 Jacob 5:32 Jacob 5:39 Jacob 5:42 Jacob 5:46 Jacob 5:47
+Jacob 5:48 Jacob 5:49 Jacob 5:64 Jacob 5:71 Jacob 5:75 Jacob 5:77 Jacob
+6:3 Jacob 6:5 Jacob 6:8 Jacob 6:13 Jacob 7:2 Jacob 7:5 Jacob 7:7 Jacob
+7:10 Jacob 7:11 Jacob 7:14 Jacob 7:15 Jacob 7:18 Jacob 7:19 Jacob 7:24
+Jacob 7:27 Mosiah 1:2 Mosiah 1:6 Mosiah 2:24 Mosiah 2:25 Mosiah 2:26
+Mosiah 2:31 Mosiah 2:41 Mosiah 3:2 Mosiah 3:12 Mosiah 3:27 Mosiah 4:2
+Mosiah 4:8 Mosiah 4:19 Mosiah 4:20 Mosiah 4:27 Mosiah 4:30 Mosiah 5:8
+Mosiah 5:14 Mosiah 5:15 Mosiah 6:4 Mosiah 6:7 Mosiah 7:11 Mosiah 7:13
+Mosiah 7:14 Mosiah 7:15 Mosiah 7:22 Mosiah 7:23 Mosiah 7:25 Mosiah 7:28
+Mosiah 8:11 Mosiah 8:12 Mosiah 8:13 Mosiah 9:19 Mosiah 10:1 Mosiah 10:6
+Mosiah 10:10 Mosiah 10:11 Mosiah 10:22 Mosiah 11:2 Mosiah 11:29 Mosiah
+12:2 Mosiah 12:8 Mosiah 12:12 Mosiah 12:26 Mosiah 12:27 Mosiah 12:29
+Mosiah 12:30 Mosiah 12:31 Mosiah 12:37 Mosiah 13:4 Mosiah 13:22 Mosiah
+13:27 Mosiah 13:32 Mosiah 13:33 Mosiah 14:8 Mosiah 15:10 Mosiah 15:12
+Mosiah 15:13 Mosiah 15:18 Mosiah 15:24 Mosiah 15:27 Mosiah 16:5 Mosiah
+16:15 Mosiah 17:2 Mosiah 17:4 Mosiah 17:10 Mosiah 17:12 Mosiah 17:19
+Mosiah 18:3 Mosiah 18:7 Mosiah 18:17 Mosiah 18:22 Mosiah 18:32 Mosiah
+19:12 Mosiah 19:22 Mosiah 20:11 Mosiah 20:14 Mosiah 20:16 Mosiah 20:18
+Mosiah 20:25 Mosiah 21:6 Mosiah 21:23 Mosiah 21:31 Mosiah 21:33 Mosiah
+21:34 Mosiah 22:5 Mosiah 22:6 Mosiah 23:17 Mosiah 23:22 Mosiah 23:29
+Mosiah 24:3 Mosiah 25:24 Mosiah 26:4 Mosiah 26:11 Mosiah 26:15 Mosiah
+26:22 Mosiah 27:1 Mosiah 27:8 Mosiah 27:13 Mosiah 27:15 Mosiah 27:16
+Mosiah 27:29 Mosiah 27:31 Mosiah 27:37 Mosiah 28:4 Mosiah 29:4 Mosiah
+29:7 Mosiah 29:18 Alma 1:9 Alma 1:12 Alma 1:24 Alma 1:26 Alma 2:13 Alma
+2:17 Alma 3:27 Alma 4:5 Alma 5:6 Alma 5:7 Alma 5:8 Alma 5:9 Alma 5:10 Alma
+5:11 Alma 5:12 Alma 5:13 Alma 5:14 Alma 5:15 Alma 5:19 Alma 5:22 Alma 5:27
+Alma 5:28 Alma 5:29 Alma 5:39 Alma 5:45 Alma 5:46 Alma 5:48 Alma 5:50 Alma
+5:52 Alma 5:58 Alma 5:59 Alma 6:8 Alma 7:8 Alma 7:17 Alma 7:27 Alma 8:15
+Alma 8:16 Alma 8:18 Alma 8:20 Alma 8:31 Alma 9:2 Alma 9:7 Alma 9:9 Alma
+9:12 Alma 9:13 Alma 9:14 Alma 9:19 Alma 9:34 Alma 10:5 Alma 10:8 Alma
+10:25 Alma 10:26 Alma 10:28 Alma 10:31 Alma 11:4 Alma 11:21 Alma 11:22
+Alma 11:23 Alma 11:24 Alma 11:25 Alma 11:32 Alma 11:34 Alma 11:37 Alma
+11:45 Alma 11:46 Alma 12:5 Alma 12:8 Alma 12:11 Alma 12:21 Alma 12:22 Alma
+13:9 Alma 13:18 Alma 13:20 Alma 13:25 Alma 14:5 Alma 14:7 Alma 14:10 Alma
+14:13 Alma 14:15 Alma 14:19 Alma 14:20 Alma 14:22 Alma 14:26 Alma 14:28
+Alma 15:3 Alma 16:6 Alma 16:8 Alma 16:11 Alma 16:12 Alma 16:15 Alma 17:10
+Alma 17:25 Alma 17:28 Alma 17:29 Alma 18:2 Alma 18:3 Alma 18:4 Alma 18:5
+Alma 18:14 Alma 18:15 Alma 18:16 Alma 18:17 Alma 18:18 Alma 18:20 Alma
+18:22 Alma 18:23 Alma 18:28 Alma 18:33 Alma 19:9 Alma 19:13 Alma 19:18
+Alma 19:28 Alma 19:29 Alma 20:4 Alma 20:13 Alma 20:14 Alma 20:20 Alma
+20:27 Alma 20:28 Alma 20:29 Alma 21:4 Alma 21:5 Alma 21:6 Alma 21:8 Alma
+21:11 Alma 21:12 Alma 21:21 Alma 21:23 Alma 22:3 Alma 22:5 Alma 22:7 Alma
+22:10 Alma 22:15 Alma 22:18 Alma 22:19 Alma 22:20 Alma 22:21 Alma 22:22
+Alma 22:23 Alma 22:25 Alma 22:29 Alma 22:31 Alma 22:34 Alma 24:15 Alma
+25:9 Alma 25:15 Alma 26:3 Alma 26:5 Alma 26:16 Alma 26:20 Alma 26:21 Alma
+26:24 Alma 26:31 Alma 26:33 Alma 26:34 Alma 26:35 Alma 26:36 Alma 26:37
+Alma 27:2 Alma 27:18 Alma 27:20 Alma 27:25 Alma 27:26 Alma 27:27 Alma
+28:8 Alma 29:9 Alma 29:17 Alma 30:11 Alma 30:12 Alma 30:13 Alma 30:15
+Alma 30:16 Alma 30:21 Alma 30:22 Alma 30:23 Alma 30:24 Alma 30:25 Alma
+30:26 Alma 30:39 Alma 30:40 Alma 30:41 Alma 30:44 Alma 30:45 Alma 30:51
+Alma 30:53 Alma 30:58 Alma 31:18 Alma 31:27 Alma 31:30 Alma 31:31 Alma
+31:32 Alma 31:36 Alma 31:38 Alma 32:18 Alma 32:20 Alma 32:23 Alma 32:26
+Alma 32:28 Alma 32:29 Alma 32:30 Alma 32:31 Alma 32:34 Alma 32:35 Alma
+32:37 Alma 33:2 Alma 33:14 Alma 33:19 Alma 33:20 Alma 33:23 Alma 34:8
+Alma 34:11 Alma 34:34 Alma 35:9 Alma 36:8 Alma 36:21 Alma 36:30 Alma
+37:13 Alma 37:39 Alma 37:41 Alma 37:45 Alma 37:46 Alma 37:47 Alma 38:8
+Alma 38:9 Alma 38:15 Alma 39:1 Alma 39:2 Alma 39:3 Alma 39:4 Alma 39:7
+Alma 39:9 Alma 39:11 Alma 39:15 Alma 39:17 Alma 40:3 Alma 40:4 Alma 40:9
+Alma 40:15 Alma 40:17 Alma 41:1 Alma 41:2 Alma 41:4 Alma 41:6 Alma 41:10
+Alma 42:2 Alma 42:13 Alma 42:17 Alma 42:25 Alma 42:26 Alma 42:30 Alma
+42:31 Alma 43:1 Alma 43:17 Alma 43:24 Alma 43:40 Alma 43:47 Alma 43:48
+Alma 44:1 Alma 44:2 Alma 44:3 Alma 44:9 Alma 44:11 Alma 44:12 Alma 44:15
+Alma 44:17 Alma 44:20 Alma 44:24 Alma 45:14 Alma 45:18 Alma 45:19 Alma
+45:22 Alma 46:24 Alma 46:27 Alma 47:2 Alma 47:11 Alma 47:15 Alma 47:16
+Alma 47:22 Alma 47:34 Alma 49:8 Alma 49:11 Alma 49:25 Alma 50:20 Alma
+50:35 Alma 50:36 Alma 50:40 Alma 51:7 Alma 51:12 Alma 51:16 Alma 51:23
+Alma 51:32 Alma 52:20 Alma 52:23 Alma 52:24 Alma 52:34 Alma 53:2 Alma
+53:5 Alma 54:4 Alma 54:13 Alma 54:14 Alma 54:16 Alma 54:22 Alma 55:8
+Alma 55:10 Alma 55:16 Alma 55:24 Alma 55:31 Alma 56:20 Alma 56:23 Alma
+56:28 Alma 56:33 Alma 56:36 Alma 56:38 Alma 56:39 Alma 56:49 Alma 57:6
+Alma 57:10 Alma 57:17 Alma 57:26 Alma 57:30 Alma 57:33 Alma 57:35 Alma
+58:1 Alma 58:4 Alma 58:18 Alma 58:23 Alma 58:30 Alma 58:41 Alma 59:12
+Alma 60:5 Alma 60:7 Alma 60:11 Alma 60:12 Alma 60:18 Alma 60:20 Alma
+60:23 Alma 60:33 Alma 60:35 Alma 60:36 Alma 61:1 Alma 61:2 Alma 61:9 Alma
+61:10 Alma 61:21 Alma 62:13 Alma 62:18 Alma 62:21 Alma 62:33 Alma 62:35
+Alma 62:36 Alma 62:37 Alma 62:47 Alma 62:48 Alma 62:52 Alma 63:3 Alma
+63:6 Alma 63:7 Alma 63:8 Alma 63:9 Helaman 1:12 Helaman 1:13 Helaman
+1:15 Helaman 1:21 Helaman 2:9 Helaman 2:11 Helaman 2:12 Helaman 3:21
+Helaman 3:34 Helaman 3:37 Helaman 4:8 Helaman 4:26 Helaman 5:5 Helaman
+5:6 Helaman 5:23 Helaman 5:27 Helaman 5:32 Helaman 5:36 Helaman 5:37
+Helaman 5:39 Helaman 6:3 Helaman 6:6 Helaman 6:12 Helaman 6:13 Helaman
+6:14 Helaman 6:15 Helaman 6:18 Helaman 6:27 Helaman 6:28 Helaman 6:30
+Helaman 7:13 Helaman 7:17 Helaman 7:21 Helaman 7:22 Helaman 8:5 Helaman
+8:8 Helaman 8:14 Helaman 8:20 Helaman 8:21 Helaman 8:22 Helaman 9:2
+Helaman 9:9 Helaman 9:12 Helaman 9:18 Helaman 9:20 Helaman 9:23 Helaman
+9:30 Helaman 9:32 Helaman 9:36 Helaman 9:37 Helaman 9:41 Helaman 10:4
+Helaman 10:6 Helaman 11:2 Helaman 11:5 Helaman 11:6 Helaman 11:9 Helaman
+11:16 Helaman 11:17 Helaman 11:21 Helaman 11:23 Helaman 11:29 Helaman
+11:32 Helaman 11:36 Helaman 12:25 Helaman 12:26 Helaman 13:2 Helaman
+13:7 Helaman 13:13 Helaman 13:14 Helaman 13:29 Helaman 13:32 Helaman
+13:33 Helaman 13:37 Helaman 13:39 Helaman 15:4 Helaman 16:1 3 Nephi 1:14
+3 Nephi 1:19 3 Nephi 1:23 3 Nephi 1:24 3 Nephi 2:16 3 Nephi 2:18 3 Nephi
+3:10 3 Nephi 3:24 3 Nephi 3:26 3 Nephi 4:14 3 Nephi 4:15 3 Nephi 4:26 3
+Nephi 4:28 3 Nephi 4:32 3 Nephi 5:13 3 Nephi 5:20 3 Nephi 5:26 3 Nephi
+7:13 3 Nephi 7:14 3 Nephi 7:17 3 Nephi 7:23 3 Nephi 8:25 3 Nephi 9:14 3
+Nephi 9:15 3 Nephi 9:16 3 Nephi 9:18 3 Nephi 9:20 3 Nephi 9:22 3 Nephi
+10:1 3 Nephi 10:9 3 Nephi 10:17 3 Nephi 10:19 3 Nephi 11:17 3 Nephi
+11:20 3 Nephi 11:22 3 Nephi 11:28 3 Nephi 12:2 3 Nephi 12:13 3 Nephi
+12:14 3 Nephi 12:15 3 Nephi 12:17 3 Nephi 12:19 3 Nephi 12:22 3 Nephi
+12:26 3 Nephi 13:2 3 Nephi 13:5 3 Nephi 13:13 3 Nephi 13:16 3 Nephi
+13:23 3 Nephi 13:24 3 Nephi 13:25 3 Nephi 13:26 3 Nephi 13:28 3 Nephi
+13:31 3 Nephi 13:34 3 Nephi 14:16 3 Nephi 15:9 3 Nephi 15:10 3 Nephi
+17:7 3 Nephi 17:20 3 Nephi 18:7 3 Nephi 18:11 3 Nephi 18:12 3 Nephi
+18:16 3 Nephi 18:24 3 Nephi 18:34 3 Nephi 18:37 3 Nephi 18:39 3 Nephi
+19:7 3 Nephi 19:12 3 Nephi 20:1 3 Nephi 20:2 3 Nephi 20:19 3 Nephi 20:22
+3 Nephi 20:23 3 Nephi 20:28 3 Nephi 20:46 3 Nephi 21:10 3 Nephi 21:26 3
+Nephi 22:11 3 Nephi 22:17 3 Nephi 23:1 3 Nephi 23:5 3 Nephi 23:9 3 Nephi
+24:1 3 Nephi 24:2 3 Nephi 24:7 3 Nephi 24:8 3 Nephi 24:13 3 Nephi 26:12
+3 Nephi 27:5 3 Nephi 27:8 3 Nephi 27:18 3 Nephi 27:27 3 Nephi 27:28 3
+Nephi 27:32 3 Nephi 28:19 Mormon 1:11 Mormon 2:1 Mormon 2:4 Mormon 2:9
+Mormon 2:14 Mormon 2:15 Mormon 2:17 Mormon 2:20 Mormon 2:25 Mormon 2:27
+Mormon 2:28 Mormon 3:1 Mormon 3:3 Mormon 3:8 Mormon 3:20 Mormon 4:2
+Mormon 4:3 Mormon 4:8 Mormon 5:4 Mormon 5:23 Mormon 6:1 Mormon 6:17
+Mormon 6:18 Mormon 6:22 Mormon 7:10 Mormon 8:3 Mormon 8:5 Mormon 8:8
+Mormon 8:12 Mormon 8:13 Mormon 8:14 Mormon 8:17 Mormon 8:23 Mormon 8:24
+Mormon 8:31 Mormon 8:33 Mormon 8:35 Mormon 8:38 Mormon 9:3 Mormon 9:12
+Mormon 9:15 Mormon 9:16 Mormon 9:18 Mormon 9:19 Mormon 9:26 Mormon 9:27
+Mormon 9:37 Ether 1:6 Ether 1:38 Ether 1:42 Ether 1:43 Ether 2:5 Ether
+2:9 Ether 2:10 Ether 2:13 Ether 2:14 Ether 2:15 Ether 2:16 Ether 2:19
+Ether 2:20 Ether 2:22 Ether 2:23 Ether 2:24 Ether 2:25 Ether 3:2 Ether
+3:5 Ether 3:6 Ether 3:9 Ether 3:14 Ether 3:15 Ether 4:5 Ether 4:11 Ether
+4:12 Ether 4:16 Ether 4:19 Ether 5:6 Ether 6:12 Ether 6:20 Ether 6:23
+Ether 6:24 Ether 6:25 Ether 7:3 Ether 7:14 Ether 7:24 Ether 7:26 Ether
+8:1 Ether 8:2 Ether 8:4 Ether 8:5 Ether 8:6 Ether 8:9 Ether 8:11 Ether
+8:15 Ether 9:1 Ether 9:15 Ether 9:23 Ether 9:24 Ether 9:29 Ether 9:31
+Ether 9:34 Ether 9:35 Ether 10:4 Ether 10:7 Ether 10:13 Ether 10:19 Ether
+10:21 Ether 10:23 Ether 10:27 Ether 10:28 Ether 10:30 Ether 10:31 Ether
+10:32 Ether 11:4 Ether 11:10 Ether 11:14 Ether 12:11 Ether 12:24 Ether
+12:27 Ether 12:30 Ether 12:37 Ether 12:41 Ether 13:21 Ether 13:28 Ether
+14:15 Ether 14:17 Ether 14:18 Ether 14:28 Ether 14:29 Ether 15:26 Ether
+15:29 Ether 15:34 Moroni 3:3 Moroni 4:3 Moroni 5:2 Moroni 6:1 Moroni 7:26
+Moroni 7:29 Moroni 7:36 Moroni 7:41 Moroni 7:46 Moroni 7:48 Moroni 8:1
+Moroni 8:7 Moroni 8:8 Moroni 8:11 Moroni 8:16 Moroni 8:21 Moroni 8:22
+Moroni 8:27 Moroni 8:28 Moroni 8:30 Moroni 9:7 Moroni 9:9 Moroni 9:15
+Moroni 9:18 Moroni 9:26 Moroni 10:8 Moroni 10:25 Moroni 10:28 Moroni
+10:34 Doctrine and Covenants 1:39 Doctrine and Covenants 3:7 Doctrine
+and Covenants 3:20 Doctrine and Covenants 4:7 Doctrine and Covenants
+5:35 Doctrine and Covenants 6:7 Doctrine and Covenants 6:10 Doctrine
+and Covenants 6:12 Doctrine and Covenants 6:14 Doctrine and Covenants
+6:19 Doctrine and Covenants 6:20 Doctrine and Covenants 6:21 Doctrine
+and Covenants 6:23 Doctrine and Covenants 6:37 Doctrine and Covenants
+7:1 Doctrine and Covenants 7:4 Doctrine and Covenants 8:5 Doctrine
+and Covenants 8:10 Doctrine and Covenants 8:12 Doctrine and Covenants
+9:12 Doctrine and Covenants 9:13 Doctrine and Covenants 9:14 Doctrine
+and Covenants 10:25 Doctrine and Covenants 10:31 Doctrine and Covenants
+10:52 Doctrine and Covenants 10:57 Doctrine and Covenants 10:70 Doctrine
+and Covenants 11:7 Doctrine and Covenants 11:9 Doctrine and Covenants
+11:28 Doctrine and Covenants 11:30 Doctrine and Covenants 12:9 Doctrine
+and Covenants 14:6 Doctrine and Covenants 14:11 Doctrine and Covenants
+15:6 Doctrine and Covenants 16:6 Doctrine and Covenants 17:9 Doctrine
+and Covenants 18:47 Doctrine and Covenants 19:10 Doctrine and Covenants
+19:35 Doctrine and Covenants 19:41 Doctrine and Covenants 20:4 Doctrine
+and Covenants 20:12 Doctrine and Covenants 20:16 Doctrine and Covenants
+20:28 Doctrine and Covenants 20:36 Doctrine and Covenants 20:73 Doctrine
+and Covenants 20:77 Doctrine and Covenants 20:79 Doctrine and Covenants
+21:12 Doctrine and Covenants 22:4 Doctrine and Covenants 23:1 Doctrine
+and Covenants 23:2 Doctrine and Covenants 23:3 Doctrine and Covenants
+23:4 Doctrine and Covenants 23:5 Doctrine and Covenants 23:7 Doctrine
+and Covenants 24:9 Doctrine and Covenants 24:10 Doctrine and Covenants
+24:12 Doctrine and Covenants 24:19 Doctrine and Covenants 25:14 Doctrine
+and Covenants 25:15 Doctrine and Covenants 25:16 Doctrine and Covenants
+26:2 Doctrine and Covenants 27:18 Doctrine and Covenants 28:9 Doctrine
+and Covenants 28:16 Doctrine and Covenants 29:50 Doctrine and Covenants
+30:4 Doctrine and Covenants 30:8 Doctrine and Covenants 30:11 Doctrine
+and Covenants 31:4 Doctrine and Covenants 31:5 Doctrine and Covenants
+31:7 Doctrine and Covenants 31:9 Doctrine and Covenants 31:13 Doctrine
+and Covenants 32:5 Doctrine and Covenants 33:18 Doctrine and Covenants
+34:3 Doctrine and Covenants 34:12 Doctrine and Covenants 35:3 Doctrine
+and Covenants 35:4 Doctrine and Covenants 35:27 Doctrine and Covenants
+36:8 Doctrine and Covenants 37:4 Doctrine and Covenants 38:7 Doctrine
+and Covenants 38:9 Doctrine and Covenants 38:27 Doctrine and Covenants
+38:42 Doctrine and Covenants 39:11 Doctrine and Covenants 39:15 Doctrine
+and Covenants 39:19 Doctrine and Covenants 39:24 Doctrine and Covenants
+40:3 Doctrine and Covenants 41:12 Doctrine and Covenants 42:10 Doctrine
+and Covenants 42:18 Doctrine and Covenants 42:36 Doctrine and Covenants
+42:69 Doctrine and Covenants 42:89 Doctrine and Covenants 42:91 Doctrine
+and Covenants 43:10 Doctrine and Covenants 43:16 Doctrine and Covenants
+43:20 Doctrine and Covenants 43:34 Doctrine and Covenants 43:35 Doctrine
+and Covenants 44:6 Doctrine and Covenants 45:52 Doctrine and Covenants
+45:75 Doctrine and Covenants 46:33 Doctrine and Covenants 47:4 Doctrine
+and Covenants 48:6 Doctrine and Covenants 49:28 Doctrine and Covenants
+50:43 Doctrine and Covenants 50:44 Doctrine and Covenants 50:46 Doctrine
+and Covenants 51:20 Doctrine and Covenants 52:41 Doctrine and Covenants
+52:44 Doctrine and Covenants 53:7 Doctrine and Covenants 54:10 Doctrine
+and Covenants 55:6 Doctrine and Covenants 56:15 Doctrine and Covenants
+56:20 Doctrine and Covenants 57:3 Doctrine and Covenants 57:5 Doctrine
+and Covenants 57:16 Doctrine and Covenants 58:4 Doctrine and Covenants
+58:23 Doctrine and Covenants 58:28 Doctrine and Covenants 58:33 Doctrine
+and Covenants 58:53 Doctrine and Covenants 58:65 Doctrine and Covenants
+59:6 Doctrine and Covenants 59:24 Doctrine and Covenants 60:2 Doctrine
+and Covenants 60:5 Doctrine and Covenants 60:7 Doctrine and Covenants
+60:17 Doctrine and Covenants 61:9 Doctrine and Covenants 61:39 Doctrine
+and Covenants 62:4 Doctrine and Covenants 62:6 Doctrine and Covenants
+62:9 Doctrine and Covenants 63:46 Doctrine and Covenants 63:58 Doctrine
+and Covenants 63:59 Doctrine and Covenants 63:66 Doctrine and Covenants
+64:16 Doctrine and Covenants 64:19 Doctrine and Covenants 64:33 Doctrine
+and Covenants 64:43 Doctrine and Covenants 65:6 Doctrine and Covenants
+66:9 Doctrine and Covenants 66:10 Doctrine and Covenants 66:13 Doctrine
+and Covenants 67:14 Doctrine and Covenants 68:12 Doctrine and Covenants
+68:35 Doctrine and Covenants 69:1 Doctrine and Covenants 69:8 Doctrine
+and Covenants 70:18 Doctrine and Covenants 71:4 Doctrine and Covenants
+71:11 Doctrine and Covenants 72:8 Doctrine and Covenants 72:23 Doctrine
+and Covenants 72:26 Doctrine and Covenants 73:6 Doctrine and Covenants
+75:12 Doctrine and Covenants 75:22 Doctrine and Covenants 75:29 Doctrine
+and Covenants 75:36 Doctrine and Covenants 76:27 Doctrine and Covenants
+76:119 Doctrine and Covenants 78:18 Doctrine and Covenants 78:22 Doctrine
+and Covenants 79:4 Doctrine and Covenants 80:5 Doctrine and Covenants
+81:7 Doctrine and Covenants 82:23 Doctrine and Covenants 82:24 Doctrine
+and Covenants 83:6 Doctrine and Covenants 84:59 Doctrine and Covenants
+84:80 Doctrine and Covenants 84:88 Doctrine and Covenants 84:120 Doctrine
+and Covenants 86:11 Doctrine and Covenants 87:8 Doctrine and Covenants
+88:7 Doctrine and Covenants 88:24 Doctrine and Covenants 88:33 Doctrine
+and Covenants 88:35 Doctrine and Covenants 88:85 Doctrine and Covenants
+88:92 Doctrine and Covenants 88:94 Doctrine and Covenants 88:106
+Doctrine and Covenants 88:126 Doctrine and Covenants 88:133 Doctrine
+and Covenants 88:141 Doctrine and Covenants 89:21 Doctrine and Covenants
+90:37 Doctrine and Covenants 91:6 Doctrine and Covenants 92:1 Doctrine
+and Covenants 92:2 Doctrine and Covenants 93:26 Doctrine and Covenants
+93:29 Doctrine and Covenants 93:33 Doctrine and Covenants 93:53 Doctrine
+and Covenants 94:17 Doctrine and Covenants 95:11 Doctrine and Covenants
+95:17 Doctrine and Covenants 96:5 Doctrine and Covenants 96:9 Doctrine
+and Covenants 97:7 Doctrine and Covenants 97:28 Doctrine and Covenants
+98:48 Doctrine and Covenants 99:8 Doctrine and Covenants 100:13 Doctrine
+and Covenants 100:17 Doctrine and Covenants 101:9 Doctrine and Covenants
+101:49 Doctrine and Covenants 101:81 Doctrine and Covenants 101:101
+Doctrine and Covenants 103:40 Doctrine and Covenants 104:48 Doctrine
+and Covenants 104:86 Doctrine and Covenants 105:8 Doctrine and Covenants
+105:41 Doctrine and Covenants 106:8 Doctrine and Covenants 107:45 Doctrine
+and Covenants 107:100 Doctrine and Covenants 108:8 Doctrine and Covenants
+109:44 Doctrine and Covenants 109:78 Doctrine and Covenants 109:79
+Doctrine and Covenants 109:80 Doctrine and Covenants 110:10 Doctrine and
+Covenants 111:9 Doctrine and Covenants 111:11 Doctrine and Covenants 112:7
+Doctrine and Covenants 112:11 Doctrine and Covenants 112:12 Doctrine and
+Covenants 112:34 Doctrine and Covenants 113:10 Doctrine and Covenants
+114:2 Doctrine and Covenants 115:19 Doctrine and Covenants 117:5 Doctrine
+and Covenants 117:6 Doctrine and Covenants 117:10 Doctrine and Covenants
+117:16 Doctrine and Covenants 119:7 Doctrine and Covenants 120:1 Doctrine
+and Covenants 121:1 Doctrine and Covenants 121:33 Doctrine and Covenants
+121:34 Doctrine and Covenants 122:6 Doctrine and Covenants 122:8 Doctrine
+and Covenants 122:9 Doctrine and Covenants 124:11 Doctrine and Covenants
+124:17 Doctrine and Covenants 124:21 Doctrine and Covenants 124:24
+Doctrine and Covenants 124:76 Doctrine and Covenants 124:87 Doctrine and
+Covenants 124:102 Doctrine and Covenants 124:110 Doctrine and Covenants
+124:114 Doctrine and Covenants 124:118 Doctrine and Covenants 124:120
+Doctrine and Covenants 124:122 Doctrine and Covenants 126:3 Doctrine and
+Covenants 127:1 Doctrine and Covenants 127:2 Doctrine and Covenants 127:4
+Doctrine and Covenants 127:10 Doctrine and Covenants 127:12 Doctrine and
+Covenants 128:2 Doctrine and Covenants 128:3 Doctrine and Covenants 128:4
+Doctrine and Covenants 128:7 Doctrine and Covenants 128:8 Doctrine and
+Covenants 128:9 Doctrine and Covenants 128:10 Doctrine and Covenants
+128:11 Doctrine and Covenants 128:14 Doctrine and Covenants 128:15
+Doctrine and Covenants 128:16 Doctrine and Covenants 128:18 Doctrine and
+Covenants 128:19 Doctrine and Covenants 128:20 Doctrine and Covenants
+128:21 Doctrine and Covenants 128:22 Doctrine and Covenants 128:23
+Doctrine and Covenants 128:24 Doctrine and Covenants 128:25 Doctrine
+and Covenants 130:1 Doctrine and Covenants 130:5 Doctrine and Covenants
+130:11 Doctrine and Covenants 130:13 Doctrine and Covenants 130:22
+Doctrine and Covenants 131:7 Doctrine and Covenants 132:20 Doctrine and
+Covenants 132:24 Doctrine and Covenants 132:34 Doctrine and Covenants
+132:35 Doctrine and Covenants 132:36 Doctrine and Covenants 132:40
+Doctrine and Covenants 132:50 Doctrine and Covenants 132:54 Doctrine
+and Covenants 132:66 Doctrine and Covenants 133:5 Doctrine and Covenants
+133:6 Doctrine and Covenants 133:10 Doctrine and Covenants 133:16 Doctrine
+and Covenants 133:53 Doctrine and Covenants 133:68 Doctrine and Covenants
+133:74 Doctrine and Covenants 134:10 Doctrine and Covenants 135:1 Doctrine
+and Covenants 135:3 Doctrine and Covenants 135:4 Doctrine and Covenants
+135:5 Doctrine and Covenants 135:6 Doctrine and Covenants 135:7 Doctrine
+and Covenants 136:42 Doctrine and Covenants 138:60 Moses 1:9 Moses 1:13
+Moses 1:14 Moses 1:15 Moses 1:18 Moses 1:31 Moses 1:35 Moses 1:42 Moses
+2:1 Moses 2:4 Moses 2:26 Moses 3:5 Moses 3:9 Moses 3:14 Moses 4:7 Moses
+4:13 Moses 4:17 Moses 4:19 Moses 4:22 Moses 4:32 Moses 5:1 Moses 5:5
+Moses 5:6 Moses 5:13 Moses 5:16 Moses 5:17 Moses 5:18 Moses 5:20 Moses
+5:21 Moses 5:22 Moses 5:23 Moses 5:30 Moses 5:31 Moses 5:32 Moses 5:34
+Moses 5:35 Moses 5:37 Moses 5:38 Moses 5:40 Moses 5:42 Moses 5:43 Moses
+5:46 Moses 5:59 Moses 6:2 Moses 6:3 Moses 6:8 Moses 6:15 Moses 6:17 Moses
+6:18 Moses 6:19 Moses 6:20 Moses 6:21 Moses 6:32 Moses 6:35 Moses 6:41
+Moses 6:44 Moses 6:53 Moses 6:66 Moses 6:68 Moses 7:17 Moses 7:19 Moses
+7:20 Moses 7:21 Moses 7:39 Moses 7:45 Moses 7:48 Moses 7:49 Moses 7:54
+Moses 7:59 Moses 8:21 Abraham 1:7 Abraham 1:9 Abraham 1:11 Abraham 1:20
+Abraham 3:4 Abraham 3:12 Abraham 3:13 Abraham 3:27 Abraham 4:1 Abraham
+4:5 Abraham 4:8 Abraham 4:21 Abraham 4:28 Abraham 4:31 Abraham 5:3
+Abraham 5:13 Joseph Smith--Matthew 1:1 Joseph Smith--Matthew 1:3 Joseph
+Smith--Matthew 1:4 Joseph Smith--Matthew 1:27 Joseph Smith--History 1:3
+Joseph Smith--History 1:5 Joseph Smith--History 1:7 Joseph Smith--History
+1:8 Joseph Smith--History 1:9 Joseph Smith--History 1:10 Joseph
+Smith--History 1:12 Joseph Smith--History 1:13 Joseph Smith--History
+1:14 Joseph Smith--History 1:15 Joseph Smith--History 1:17 Joseph
+Smith--History 1:18 Joseph Smith--History 1:20 Joseph Smith--History
+1:21 Joseph Smith--History 1:23 Joseph Smith--History 1:24 Joseph
+Smith--History 1:25 Joseph Smith--History 1:26 Joseph Smith--History
+1:28 Joseph Smith--History 1:31 Joseph Smith--History 1:32 Joseph
+Smith--History 1:34 Joseph Smith--History 1:36 Joseph Smith--History
+1:39 Joseph Smith--History 1:40 Joseph Smith--History 1:41 Joseph
+Smith--History 1:45 Joseph Smith--History 1:46 Joseph Smith--History
+1:48 Joseph Smith--History 1:49 Joseph Smith--History 1:50 Joseph
+Smith--History 1:51 Joseph Smith--History 1:52 Joseph Smith--History
+1:55 Joseph Smith--History 1:56 Joseph Smith--History 1:57 Joseph
+Smith--History 1:58 Joseph Smith--History 1:59 Joseph Smith--History
+1:60 Joseph Smith--History 1:61 Joseph Smith--History 1:62 Joseph
+Smith--History 1:63 Joseph Smith--History 1:64 Joseph Smith--History
+1:65 Joseph Smith--History 1:66 Joseph Smith--History 1:68 Joseph
+Smith--History 1:72 Joseph Smith--History 1:73 Joseph Smith--History
+1:74 Joseph Smith--History 1:75 Articles of Faith 1:13
+
+2.5.0
+-----
+
+- First custom XML release.
+
+- Added Microsoft Excel 97/2000/XP (.xls) and OpenDocument Spreadsheet
+(.ods) formats to the export list
+
+- PostgreSQL:
+	* used smallint instead of int where possible
+	* encoding set to LATIN1
+	* cleaner database dump
+	* changed all fields to NOT NULL
+
+- MySQL:
+	* Removed all NULL values
+
+- SQLite:
+	* All NULL values changed to blank
+
+- CSV:
+	* Removed the newlines in the CSV files on lds_scriptures_books,
+	which may have caused some problems when someone is trying to
+	split up the rows based on \n or \r.
+
+- Added 'pilcrow' field to lds_scriptures_verses: Now instead of
+verse_scripture having &#142;, the exports have a boolean flag so whoever
+uses the data can decide if they want to display the pilcrow or not.
+Affected 2,964 verses (all in the Old and New Testaments).
+
+- Text exports (CSV, XML, TeX, ODS, XLS) now have files for both the
+relational tables AND a non-relational file (lds_scriptures).  Basically,
+it means that all the data from all the tables is in one file in addition
+to the regular export of each table individually.  The old releases
+would usually have one or the other.  If you're interested in creating
+a non-relational table for the databases, see the 'Notes' section on
+the website.  Exporting an additional table would increase the export
+size greatly, so they are not included in the database downloads.
+
+- Fixed verses where two spaces were between two unpunctuated words.
+See the section 'Errata' in the documentation for details about the
+punctuation and spacing in the scriptures.
+
+Affected 75 verses:
+
+Num. 6:20, Deut. 5:15, Deut. 31:17, Judg. 16:17, Isa. 37:21, Jer. 34:12,
+Ezek. 37:14, 1 Ne. 4:20, 1 Ne. 4:29, 1 Ne. 8:21, 1 Ne. 12:18, 1 Ne. 16:23,
+1 Ne. 17:52, 1 Ne. 21:12, 2 Ne. 10:19, 2 Ne. 20:29, 2 Ne. 28:12, Jacob
+4:9, Mosiah 2:15, Mosiah 2:32, Mosiah 2:37, Mosiah 4:9, Mosiah 4:14,
+Mosiah 7:21, Mosiah 20:13, Mosiah 21:26, Mosiah 25:13, Mosiah 26:12,
+Alma 2:12, Alma 2:24, Alma 5:9, Alma 5:57, Alma 15:18, Alma 16:9, Alma
+17:27, Alma 18:16, Alma 18:38, Alma 19:16, Alma 26:12, Alma 30:28, Alma
+30:33, Alma 34:27, Alma 34:33, Alma 39:11, Alma 47:10, Alma 47:34, Alma
+50:11, Alma 50:23, Alma 50:29, Alma 51:31, Alma 57:17, Alma 62:51, Alma
+63:12, Hel. 1:21, Hel. 1:32, Hel. 3:30, Hel. 3:36, Hel. 5:41, Hel. 8:11,
+Hel. 13:21, 3 Ne. 1:15, 3 Ne. 6:30, 3 Ne. 7:12, 3 Ne. 8:14, 3 Ne. 9:10,
+3 Ne. 11:38, 3 Ne. 13:16, 3 Ne. 17:18, 3 Ne. 19:20, 3 Ne. 23:13, 3
+Ne. 26:17, Morm. 9:36, Ether 3:16, Ether 8:11, Ether 9:31
+
+- Fixed verses that still had verse numbers in the beginning of the text.
+
+Affected 133 verses:
+
+Enos 1:14, D&C 76:100, D&C 76:101, D&C 76:102, D&C 76:103, D&C 76:104,
+D&C 76:105, D&C 76:106, D&C 76:107, D&C 76:108, D&C 76:109, D&C 76:110,
+D&C 76:111, D&C 76:112, D&C 76:113, D&C 76:114, D&C 76:115, D&C 76:116,
+D&C 76:117, D&C 76:118, D&C 76:119, D&C 84:100, D&C 84:101, D&C 84:102,
+D&C 84:103, D&C 84:104, D&C 84:105, D&C 84:106, D&C 84:107, D&C 84:108,
+D&C 84:109, D&C 84:110, D&C 84:111, D&C 84:112, D&C 84:113, D&C 84:114,
+D&C 84:115, D&C 84:116, D&C 84:117, D&C 84:118, D&C 84:119, D&C 84:120,
+D&C 88:100, D&C 88:101, D&C 88:102, D&C 88:103, D&C 88:104, D&C 88:105,
+D&C 88:106, D&C 88:107, D&C 88:108, D&C 88:109, D&C 88:110, D&C 88:111,
+D&C 88:112, D&C 88:113, D&C 88:114, D&C 88:115, D&C 88:116, D&C 88:117,
+D&C 88:118, D&C 88:119, D&C 88:120, D&C 88:121, D&C 88:122, D&C 88:123,
+D&C 88:124, D&C 88:125, D&C 88:126, D&C 88:127, D&C 88:128, D&C 88:129,
+D&C 88:130, D&C 88:131, D&C 88:132, D&C 88:133, D&C 88:134, D&C 88:135,
+D&C 88:136, D&C 88:137, D&C 88:138, D&C 88:139, D&C 88:140, D&C 88:141,
+D&C 101:100, D&C 101:101, D&C 107:100, D&C 124:100, D&C 124:101, D&C
+124:102, D&C 124:103, D&C 124:104, D&C 124:105, D&C 124:106, D&C 124:107,
+D&C 124:108, D&C 124:109, D&C 124:110, D&C 124:111, D&C 124:112, D&C
+124:113, D&C 124:114, D&C 124:115, D&C 124:116, D&C 124:117, D&C 124:118,
+D&C 124:119, D&C 124:120, D&C 124:121, D&C 124:122, D&C 124:123, D&C
+124:124, D&C 124:125, D&C 124:126, D&C 124:127, D&C 124:128, D&C 124:129,
+D&C 124:130, D&C 124:131, D&C 124:132, D&C 124:133, D&C 124:134, D&C
+124:135, D&C 124:136, D&C 124:137, D&C 124:138, D&C 124:139, D&C 124:140,
+D&C 124:141, D&C 124:142, D&C 124:143, D&C 124:144, D&C 124:145
+
+- Cleaned up the documentation.
+
+- Fixed the newlines on the documents in the .zip exports.
+
+2.4.0
+-----
+- Fixed the files in .zip packages so they use DOS file formats.
+The documents and exports should be viewable in Notepad now.
+
+- Fixed the broken XML .zip export (v2.3.0 wouldn't unzip)
+
+- Added lds_org to lds_scriptures_volumes and lds_scriptures_books,
+stores the naming scheme for the directories used on the Church's
+Scriptures website.  See http://scriptures.lds.org/
+
+- Added num_books, num_chapters, num_verses to lds_scriptures_volumes
+
+- Added num_chapters, num_verses to lds_scriptures_books
+
+- Cleaned up the installation documentation for MySQL + Windows
+
+2.3.0
+-----
+- New standardized book and verse titles, based on Church's "Abbreviations
+and Designations in Footnotes and Index".  The new standardization fixes
+a large number of questions as to how the books should be referenced in
+book_title and book_title_short, what the verse_title value for the Four
+Gospels would be (St John, St. John, Saint John, John), and fixes old
+values in lds_scriptures_books (ex: 1 Chronicles).  Thanks to everyone
+who made me aware of the issues. :)
+
+- MySQL: Added a FULLTEXT index on lds_scriptures_verses.verse_scripture.
+
+See the MySQL documentation on how this can really help when writing
+functions to search the database.
+http://dev.mysql.com/doc/mysql/en/Fulltext_Search.html
+
+- Fixed bug where 62 verses from New Testament were missing.
+
+- Fixed bug where verse_title and verse_title_long were incorrect in
+lds_scriptures_verses
+
+- Much needed documenation finally created in DocBook format.
+http://mdp.nephi.org/scriptures/docs/
+
+- lds_scriptures_books: book_title, book_title_long for Articles of
+Faith and Doctrine and Covenants fixed
+
+- lds_scriptures_books: dropped volume_order, book_chapters, book_verses
+
+- Simplified field names
+
+	lds_scriptures_volumes
+	----------------------
+	volume_name -> volume_title
+	volume_name_long -> volume_title_long
+
+	lds_scriptures_verses
+	---------------------
+	verse_chapter -> chapter
+	verse_number -> verse
+
+- Databases: Optimized varchar lengths and field types
+
+- Databases: Added a "unique" index on lds_scriptures_verses verse_title
+and verse_title_short.
+
+- Fixed a duplicate entry of chapter, verse, verse_title,
+verse_title_short for 3 John 1:1
+
+- Fixed over 300 instances of double spaces between words (not sentences)
+in verse_scripture.  I found a bug where there were two spaces between
+words in sentences and they didn't belong.
+
+For instance, "Abel was a keeper of sheep."
+
+Affected verses:
+
+Genesis 4:2, Exodus 10:13, Exodus 14:22, 1 Samuel 19:22, Ezekiel 42:14,
+Obadiah 1:20, Mark 5:35, Luke 3:24, Luke 3:33, John 8:25, John 12:16,
+The Acts 5:15, The Acts 28:23, 1 Nephi 1:7, 1 Nephi 1:14, 1 Nephi 1:19,
+1 Nephi 2:16, 1 Nephi 3:20, 1 Nephi 7:12, 1 Nephi 7:17, 1 Nephi 8:28,
+1 Nephi 8:36, 1 Nephi 10:11, 1 Nephi 11:28, 1 Nephi 11:34, 1 Nephi 12:11,
+1 Nephi 13:26, 1 Nephi 13:30, 1 Nephi 13:35, 1 Nephi 13:40, 1 Nephi 15:17,
+1 Nephi 15:30, 1 Nephi 16:11, 1 Nephi 17:17, 1 Nephi 17:22, 1 Nephi 17:35,
+1 Nephi 17:41, 1 Nephi 17:46, 1 Nephi 18:10, 1 Nephi 18:15, 1 Nephi 18:21,
+1 Nephi 20:14, 1 Nephi 20:21, 1 Nephi 21:19, 1 Nephi 22:14, 2 Nephi 1:9,
+2 Nephi 1:13, 2 Nephi 1:25, 2 Nephi 2:10, 2 Nephi 2:14, 2 Nephi 2:20,
+2 Nephi 2:26, 2 Nephi 3:11, 2 Nephi 3:16, 2 Nephi 4:11, 2 Nephi 4:17,
+2 Nephi 4:26, 2 Nephi 5:33, 2 Nephi 6:14, 2 Nephi 8:20, 2 Nephi 9:9,
+2 Nephi 9:14, 2 Nephi 9:25, 2 Nephi 9:40, 2 Nephi 13:24, 2 Nephi 17:23,
+2 Nephi 18:15, 2 Nephi 20:14, 2 Nephi 23:15, 2 Nephi 24:31, 2 Nephi 25:8,
+2 Nephi 25:13, 2 Nephi 26:10, 2 Nephi 26:21, 2 Nephi 26:33, 2 Nephi
+27:23, 2 Nephi 31:17, 2 Nephi 33:11, Jacob 1:9, Jacob 2:11, Jacob 3:10,
+Jacob 4:14, Jacob 5:11, Jacob 5:17, Jacob 5:27, Jacob 5:33, Jacob 5:39,
+Jacob 5:56, Jacob 5:73, Jacob 5:77, Jacob 7:11, Jacob 7:17, Mosiah 1:13,
+Mosiah 2:21, Mosiah 2:27, Mosiah 3:22, Mosiah 4:30, Mosiah 7:16, Mosiah
+7:33, Mosiah 8:11, Mosiah 8:17, Mosiah 10:11, Mosiah 10:17, Mosiah 11:17,
+Mosiah 11:23, Mosiah 11:29, Mosiah 12:11, Mosiah 12:25, Mosiah 13:13,
+Mosiah 15:11, Mosiah 17:13, Mosiah 19:28, Mosiah 20:19, Mosiah 21:14,
+Mosiah 21:20, Mosiah 23:13, Mosiah 23:28, Mosiah 23:36, Mosiah 26:20,
+Mosiah 26:28, Mosiah 27:16, Mosiah 27:22, Mosiah 27:29, Mosiah 28:11,
+Mosiah 29:12, Mosiah 29:18, Mosiah 29:30, Mosiah 29:36, Alma 1:8, Alma
+1:20, Alma 1:26, Alma 2:37, Alma 3:11, Alma 3:18, Alma 3:25, Alma 4:9,
+Alma 4:20, Alma 5:22, Alma 5:28, Alma 5:47, Alma 5:52, Alma 7:9, Alma
+7:14, Alma 7:25, Alma 8:24, Alma 9:11, Alma 9:21, Alma 9:32, Alma 10:10,
+Alma 10:21, Alma 11:22, Alma 11:39, Alma 12:9, Alma 12:20, Alma 12:36,
+Alma 13:16, Alma 13:22, Alma 14:15, Alma 16:15, Alma 17:9, Alma 17:20,
+Alma 19:21, Alma 19:27, Alma 20:18, Alma 20:25, Alma 20:30, Alma 21:23,
+Alma 22:12, Alma 22:22, Alma 22:27, Alma 22:31, Alma 23:17, Alma 24:15,
+Alma 24:20, Alma 26:18, Alma 26:24, Alma 26:29, Alma 26:35, Alma 27:12,
+Alma 28:11, Alma 30:11, Alma 30:17, Alma 30:23, Alma 30:47, Alma 30:53,
+Alma 30:58, Alma 31:11, Alma 31:23, Alma 31:36, Alma 32:17, Alma 32:24,
+Alma 33:20, Alma 34:11, Alma 36:12, Alma 36:26, Alma 37:16, Alma 37:22,
+Alma 37:28, Alma 37:33, Alma 37:45, Alma 39:17, Alma 42:17, Alma 42:31,
+Alma 43:22, Alma 43:27, Alma 43:40, Alma 43:51, Alma 44:19, Alma 45:13,
+Alma 45:19, Alma 46:28, Alma 46:33, Alma 47:23, Alma 47:30, Alma 47:35,
+Alma 48:11, Alma 48:23, Alma 49:16, Alma 50:35, Alma 51:9, Alma 51:14,
+Alma 52:10, Alma 52:15, Alma 52:26, Alma 52:39, Alma 53:14, Alma 53:20,
+Alma 54:11, Alma 55:33, Alma 56:33, Alma 57:29, Alma 58:11, Alma 58:29,
+Alma 58:41, Alma 60:10, Alma 60:16, Alma 60:32, Alma 62:22, Alma 62:29,
+Alma 62:39, Helaman 1:10, Helaman 5:15, Helaman 5:21, Helaman 5:34,
+Helaman 5:48, Helaman 6:11, Helaman 6:17, Helaman 6:22, Helaman 6:39,
+Helaman 7:10, Helaman 7:29, Helaman 9:17, Helaman 9:23, Helaman 11:11,
+Helaman 11:23, Helaman 11:28, Helaman 13:26, Helaman 13:38, Helaman 14:12,
+Helaman 14:24, Helaman 15:15, 3 Nephi 2:11, 3 Nephi 2:17, 3 Nephi 3:10,
+3 Nephi 3:14, 3 Nephi 3:21, 3 Nephi 3:25, 3 Nephi 4:27, 3 Nephi 4:33,
+3 Nephi 9:22, 3 Nephi 10:12, 3 Nephi 12:13, 3 Nephi 12:28, 3 Nephi 12:37,
+3 Nephi 13:25, 3 Nephi 13:33, 3 Nephi 14:16, 3 Nephi 14:25, 3 Nephi 15:21,
+3 Nephi 16:15, 3 Nephi 18:34, 3 Nephi 19:12, 3 Nephi 19:26, 3 Nephi 20:20,
+3 Nephi 20:40, 3 Nephi 21:16, 3 Nephi 22:14, 3 Nephi 24:12, 3 Nephi 26:12,
+Mormon 1:18, Mormon 2:11, Mormon 3:11, Mormon 5:10, Mormon 5:15, Mormon
+8:24, Mormon 8:30, Mormon 8:36, Mormon 9:17, Mormon 9:24, Mormon 9:29,
+Ether 1:43, Ether 2:10, Ether 2:15, Ether 2:25, Ether 3:3, Ether 3:9,
+Ether 3:22, Ether 6:11, Ether 6:19, Ether 7:21, Ether 7:27, Ether 8:23,
+Ether 9:12, Ether 9:19, Ether 10:10, Ether 10:16, Ether 10:23, Ether
+10:30, Ether 11:12, Ether 12:12, Ether 12:20, Ether 12:25, Ether 12:31,
+Ether 12:37, Ether 13:11, Ether 13:31, Ether 14:5, Ether 14:13, Ether
+15:17, Ether 15:24, Moroni 7:12, Moroni 7:24, Moroni 7:36, Moroni 7:48,
+Moroni 9:10, Moroni 9:24, Moroni 10:28, Moroni 10:34
+
+2.2.0
+-----
+- Moved the Book of Mormon to volume_id 3 instead of volume_id 1, so
+that the order of the books is more like the actual printed versions.
+Also makes it simple if someone only wants the KJV Bible, they only need
+to delete the rows where volume_id > 2.
+	new id name
+
+	1 Old Testament
+	2 New Testament
+	3 Book of Mormon
+	4 Doctrine and Covenants
+	5 Pearl of Great Price
+
+  The change affected all three tables.
+
+- PostgreSQL, MySQL and SQLite:
+
+	Added new indexes on lds_scriptures_verses:
+	verse_id
+	volume_book_chapter_verse
+	book_chapter_verse
+	verse_title
+	verse_title_short
+
+- Dropped book_id 88 (History of the Church) from lds_scriptures_books
+
+- MySQL: "scriptures" table renamed to lds_scriptures, and recreated
+with less fields, and reindexed.
+
+2.1.0
+-----
+- MySQL: Generated a new non-relational table that contains
+all the data: "scriptures" for creating XML, TeX and CSV formats.
+
+	CREATE TABLE scriptures SELECT mdp_scriptures_verses.verse_id,
+	mdp_scriptures_verses.volume_id,
+	mdp_scriptures_volumes.volume_name,
+	mdp_scriptures_volumes.volume_name_long,
+	mdp_scriptures_volumes.volume_subtitle,
+	mdp_scriptures_verses.book_id, mdp_scriptures_books.book_title,
+	mdp_scriptures_books.book_title_long,
+	mdp_scriptures_books.book_title_short,
+	mdp_scriptures_books.book_title_jst,
+	mdp_scriptures_books.book_subtitle,
+	mdp_scriptures_books.book_chapters,
+	mdp_scriptures_books.book_verses,
+	mdp_scriptures_verses.verse_chapter,
+	mdp_scriptures_verses.verse_number,
+	mdp_scriptures_verses.verse_scripture,
+	mdp_scriptures_verses.verse_title,
+	mdp_scriptures_verses.verse_title_short FROM
+	mdp_scriptures_books, mdp_scriptures_verses,
+	mdp_scriptures_volumes WHERE mdp_scriptures_verses.book_id =
+	mdp_scriptures_books.book_id AND mdp_scriptures_verses.volume_id
+	= mdp_scriptures_volumes.volume_id;
+
+
+- XML, CSV and TeX: The exports use the non-relational table now, so
+all the data is in one file.
+
+- Converted HTML entries to plain text or removed them:
+
+	Old New Example
+	&#151; -- Doctrine and Covenants 1:9
+	&#8212; -- 1 Nephi 1:13
+	&#147; " Doctrine and Covenants 135:4
+	&#148; " Doctrine and Covenants 135:4
+
+
+  The Pilcrow (&#182; - see Genesis 1:6) was *not* removed from any of
+  the scriptures.  I can't seem to reach a decision whether to take
+  them out or leave them in myself (since the printed version of the
+  LDS Scriptures contains them, but some terminals may not render them
+  correctly), so I am leaving it up to the user.  If you want to remove
+  them that's up to you. :) I would recommend taking them out for the
+  XML or CSV formats of the Scriptures though.	If you are using them in
+  anything other than an HTML displayed page, you probably don't want to
+  see them.  Note that the KJV module for Sword does _not_ include them.
+
+- Dropped Bible Dictionary and History of the Church from volumes table
+since they are empty.
+
+- Renamed mdp_scriptures and tables to lds_scriptures
+
+- Fixed a bug in New Testament where any book that started with 2 or 3
+(2nd Thessalonians) the verse_number of the first verse was set to 0
+instead of 1.  (Thanks, Byron!)
+
+2.0.2
+-----
+- Fixed 3 scriptures where &#145 (a quote "'") wasn't replaced:
+	Exodus 9:29
+	Psalms 24:1
+	Isaiah 44:5
+
+	MySQL:
+
+	  UPDATE mdp_scriptures_verses SET verse_scripture =
+	  REPLACE(verse_scripture, "&#145;", "\'");
+
+	PostgreSQL:
+
+	  UPDATE mdp_scriptures_verses SET verse_scripture =
+	  REPLACE(verse_scripture, '&#145;', '\'');
+
+	SQLite:
+
+	  UPDATE mdp_scriptures_verses SET verse_scripture = "And Moses
+	  said unto him, As soon as I am gone out of the city, I will
+	  spread abroad my hands unto the LORD; and the thunder shall
+	  cease, neither shall there be any more hail; that thou mayest
+	  know how that the earth is the LORD's." WHERE verse_id = 8376;
+	  UPDATE mdp_scriptures_verses SET verse_scripture = "THE earth
+	  is the LORD's, and the fulness thereof; the world, and they
+	  that dwell therein." WHERE verse_id = 20847;
+	  UPDATE mdp_scriptures_verses SET verse_scripture = "One shall
+	  say, I am the LORD's; and another shall call himself by the
+	  name of Jacob; and another shall subscribe with his hand unto
+	  the LORD, and surname himself by the name of Israel." WHERE
+	  verse_id = 25143;
+
+2.0.1
+-----
+- Removed all instances of mdp_scriptures_chapters
+
+- Forgot to mention (in this ChangeLog) a difference from the original
+text in the Scriptures -- I omitted the * in Joseph Smith-History 1:71.
+Also,
+I should note that Oliver Cowdery's events are not included, since they
+don't really fall in "standard" scripture format.  Whether they should be
+included or not, I dunno.  Maybe in Revision 4.
+
+2.0.0
+-----
+- General reindexing, renaming, and cleaning of database tables
+
+- Added Doctrine & Covenants and Pearl of Great Price
+
+Revision 1.3
+------------
+
+2004-04-27
+
+* mdp_scriptures_books
+
+	Inserted the values for books_verses
+
+	Updated book_title, book_title_long, book_title_short and
+	book_subtitle
+	for all the books in the Pearl of Great Price to correspond to the
+	printed version of the LDS scriptures
+
+	Tweaked the database indexes
+
+	Updated book_title_long to = book_title if book_title_long
+	was NULL
+
+* mdp_scriptures_volumes
+
+	Added volume_name_long and volume_subtitle
+
+* mdp_scriptures_verses
+
+	Replaced instances of &amp;#182; with &#182;
+
+2004-04-19
+
+* mdp_scriptures_verses
+
+	Fixed the verse_title for the Four Gospels.  John => St John
+
+	Fixed the paragraphs (&#182;) not showing up in the Gospels and
+	The Acts
+
+2004-04-18
+
+* mdp_scriptures_verses
+
+	Because of a bug in my original importing script, any chapter
+	with over
+	one hundred verses was being ignored.  The 119th psalm was the
+	only one
+	affected, and has been added.
+
+	The Book of Amos was added, which was left out.
+
+	The Song of Solomon was added, which was left out.
+
+	Column 'book_id' was renamed to 'volume_book'
+
+Revision 1.2
+------------
+
+2004-03-31
+
+* mdp_scriptures_verses: Since revision 1.1 included going back to
+	a more original import to redo the export and clear out all the
+	listings, I forgot, again, to pull out the 'comprising' chapter
+	headers
+	which remained in these verses:
+
+	Mosiah 8:21
+	Mosiah 22:16
+	Alma 4:20
+	Alma 6:8
+	Alma 8:32
+	Alma 16:21
+	Alma 35:16
+	Alma 37:47 (not a 'comprising chapters' header)
+	Alma 38:15
+	Alma 44:24
+	Helaman 6:41
+	Helaman 12:26
+	3 Nephi 10:19
+
+	And even though revision 1.0 listed Alma 21 as containing a
+	header, I didn't
+	see it in this revision, so either I was wrong the first time,
+	or I got it
+	out this time and didn't document it.  Either way, Alma 21 *does*
+	have a
+	comprising chapter header, but it is not in the database in
+	Alma 20:30.
+
+	Also, removed "THE END" from Moroni 10:34
+
+Revision 1.1
+------------
+
+2004-03-27
+
+* mdp_books: renamed to mdp_scriptures_books
+
+* mdp_scriptures: renamed to mdp_scriptures_verses
+
+* mdp_volumes: renamed to mdp_scriptures_volumes
+
+* mdp_scriptures_verses:
+	- Deleted duplicate rows
+	- Reindexed the primary key
+	- Added indexes on volume, book, chapter and verse
+	- Fixed incorrect 'title' values
+	- Added title_short column (1 Ne. 1:1)
+	- Reorganized rows so they are all in the correct order
+	- Deleted <small> tag from 'scripture'
+
+* mdp_scriptures_books:
+	- Added 'book' column
+	- Deleted 'Testimony of the Prophet Joseph Smith', 'The Testimony
+	of the
+	Eight Witnesses', 'The Testimony of the Three Witnesses' and
+	'Title Page'
+	since they are not 'books' in the sense of having scriptures.
+	Will add
+	back in Revision 2 with mdp_scriptures_extras, including the
+	King James
+	Version Biblical dedication
+	- Added all the title_long values for the Bible
+	- Renamed the 'title' values to the book title seen on the pages
+	of the LDS
+	KJV Bible (originally was the values on the Table of Contents)
+	- Added 'title_jst' for the four Gospels
+	- Renamed 'title_index' column (the subdirectory used on
+	scriptures.lds.org)
+	- Added 'title_short' column
+	- Moved 'Articles of Faith' to volume 5, the Pearl of Great
+	Price, instead
+	of including it as a separate volume of work (may change in
+	the future)
+	- Reindexed the primary key
+
+Revision 1
+----------
+
+2004-03-10
+
+* database:
+	- Cleaned up the mysql structure a bit, and hopefully optimized
+	the indexes
+	- Cleaned up the mdp_scriptures table, and reindexed the id column
+	- Removed the following from the database since they are believed
+	or are
+	original and/or revised works of the Church:
+		'Book of Mormon: Introduction'
+		'Book of Mormon: Testimony of the Prophet Joseph Smith'
+		'A Brief Explanation about the Book of Mormon'
+		 "Comprising chapters" headers at Mosiah 9, 23, Alma 5,
+		 7, 9, 17, 21, 36,
+		 38, 39, 45, Helaman 7, 13 and 3 Nephi 11
