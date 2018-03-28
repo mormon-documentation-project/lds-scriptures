@@ -1,0 +1,7 @@
+MD5(lds-scriptures-excel.zip)= 580308cfb69972c1e467eb35900184ad
+MD5(lds-scriptures-mysql.sql.zip)= d20596014d68cd2ead95e64d22524390
+MD5(lds-scriptures-psql.sql.zip)= b56564d06f01dd38912b8fc47e09b6f0
+MD5(lds-scriptures-sqlite3.db.zip)= 2257fcbb3b21b080e52fdd34cf23d8d3
+MD5(lds-scriptures.csv.zip)= 1ab01e5208f2073eae8a3d45f9e5199f
+MD5(lds-scriptures.json.zip)= 4040d60063d7848c29a475ec9fc41561
+MD5(lds-scriptures.ods.zip)= b18a5d54589ab30cd9f3203152588074
