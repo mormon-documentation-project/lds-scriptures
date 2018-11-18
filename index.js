@@ -50,18 +50,9 @@ db.prepare('SELECT * FROM volumes').all()
 									recursive: true,
 								}, () => {
 									writeFile(path.join(chDir, 'index.json'), JSON.stringify(chapter));
-									const vDir = path.join(chDir, 'verses');
+									const verses = db.prepare('SELECT * FROM verses WHERE chapter_id = ?').all(chapter.id);
 
-									mkdir(vDir, {
-										recursive: true,
-									}, () => {
-										db.prepare('SELECT * FROM verses WHERE chapter_id = ?').all(chapter.id)
-											.forEach((verse) => {
-												verse = cleanRecord(verse, 'verse');
-
-												writeFile(path.join(vDir, `${ verse.number }.json`), JSON.stringify(verse));
-											});
-										});
+									writeFile(path.join(chDir, 'verses.json'));
 								});
 							});
 					});
