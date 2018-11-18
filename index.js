@@ -42,16 +42,19 @@ db.prepare('SELECT * FROM volumes').all()
 						db.prepare('SELECT * FROM chapters WHERE book_id = ?').all(book.id)
 							.forEach((chapter) => {
 								chapter = cleanRecord(chapter, 'chapter');
-								const chDir = path.join(bookDir, String(chapter.number));
+								
+								const verses = db.prepare('SELECT * FROM verses WHERE chapter_id = ?').all(chapter.id);
 
-								mkdir(chDir, () => {
-									writeFile(path.join(chDir, 'index.json'), JSON.stringify(chapter));
-									let verses = db.prepare('SELECT * FROM verses WHERE chapter_id = ?').all(chapter.id);
+								chapter.verses = verses.map(verse => {
+									verse = cleanRecord(verse, 'verse');
 
-									verses = verses.map(verse => cleanRecord(verse, 'verse'));
+									delete verse.chapterId;
+									verse.chapter = chapter.number;
 
-									writeFile(path.join(chDir, 'verses.json'), JSON.stringify(verses));
+									return verse;
 								});
+
+								writeFile(path.join(bookDir, `chapter-${ chapter.number }.json`), JSON.stringify(chapter));
 							});
 					});
 				});
