@@ -1,0 +1,12 @@
+{
+  "name": "lds-scriptures",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/mormon-documentation-project/lds-scriptures.git",
+  "author": "Lance Miller <lmiller@bamboohr.com>",
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^5.0.1",
+    "change-case": "^3.0.2"
+  }
+}
