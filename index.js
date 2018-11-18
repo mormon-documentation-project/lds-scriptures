@@ -34,25 +34,23 @@ db.prepare('SELECT * FROM volumes').all()
 			db.prepare('SELECT * FROM books WHERE volume_id = ?').all(volume.id)
 				.forEach((book) => {
 					book = cleanRecord(book, 'book')
-					const bookDir = path.join(volDir, 'books', book.name);
+					const bookDir = path.join(volDir, book.name);
 
-					mkdir(bookDir, {
-						recursive: true,
-					}, () => {
+					mkdir(bookDir, () => {
 						writeFile(path.join(bookDir, 'index.json'), JSON.stringify(book));
 
 						db.prepare('SELECT * FROM chapters WHERE book_id = ?').all(book.id)
 							.forEach((chapter) => {
 								chapter = cleanRecord(chapter, 'chapter');
-								const chDir = path.join(bookDir, 'chapters', String(chapter.number));
+								const chDir = path.join(bookDir, String(chapter.number));
 
-								mkdir(chDir, {
-									recursive: true,
-								}, () => {
+								mkdir(chDir, () => {
 									writeFile(path.join(chDir, 'index.json'), JSON.stringify(chapter));
-									const verses = db.prepare('SELECT * FROM verses WHERE chapter_id = ?').all(chapter.id);
+									let verses = db.prepare('SELECT * FROM verses WHERE chapter_id = ?').all(chapter.id);
 
-									writeFile(path.join(chDir, 'verses.json'));
+									verses = verses.map(verse => cleanRecord(verse, 'verse'));
+
+									writeFile(path.join(chDir, 'verses.json'), JSON.stringify(verses));
 								});
 							});
 					});
