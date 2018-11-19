@@ -76,7 +76,7 @@ function select(table, where = null) {
 		.map((val) => cleanRecord(val, table.replace(/s$/, '')));
 }
 
-const index = {};
+const volumes = [];
 const rootDir = path.join(__dirname, 'json');
 
 select('volumes').forEach((volume) => {
@@ -90,6 +90,7 @@ select('volumes').forEach((volume) => {
 		volume.bookCount++;
 
 		delete book.volumeId;
+		book.volume = volume.name;
 
 		book.chapterCount = 0;
 		book.verseCount = 0;
@@ -101,6 +102,7 @@ select('volumes').forEach((volume) => {
 			book.chapterCount++;
 
 			delete chapter.bookId;
+			chapter.volume = volume.name;
 
 			chapter.verseCount = 0;
 
@@ -123,10 +125,10 @@ select('volumes').forEach((volume) => {
 		console.log(book);
 	});
 
-	index[volume.name] = volume.books;
+	volumes.push(volume);
 });
 
-makeFile([rootDir, 'index.json'], index);
-console.log(index);
+makeFile([rootDir, 'volumes.json'], volumes);
+console.log(volumes);
 
 console.log('DONE!');
