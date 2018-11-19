@@ -1,6 +1,6 @@
 const {
-	mkdir,
-	writeFileSync: writeFile,
+	mkdirSync,
+	writeFileSync,
 } = require('fs');
 const path = require('path');
 
@@ -20,43 +20,120 @@ function cleanRecord(obj, prefix) {
 	}), {});
 }
 
-db.prepare('SELECT * FROM volumes').all()
-	.forEach((volume) => {
-		volume = cleanRecord(volume, 'volume');
-		const volDir = path.resolve(__dirname, 'volumes', volume.name);
+function sortKeys(obj) {
+	if (typeof (obj.id) !== 'undefined') {
+		delete obj.id;
+	}
+
+	return Object.keys(obj).sort()
+		.reduce((newObj, key) => ({
+			...newObj,
+			[key]: obj[key],
+		}), {});
+}
+
+function makeFile(pathname, content) {
+	if (Array.isArray(pathname)) {
+		pathname = path.join(...pathname);
+	}
+
+	mkdirSync(path.dirname(pathname), { recursive: true });
 
 
-		mkdir(volDir, {
-			recursive: true,
-		}, () => {
-			writeFile(path.join(volDir, `index.json`), JSON.stringify(volume));
+	if (typeof content !== 'string') {
+		if (Array.isArray(content)) {
+			content = content.map(sortKeys);
+		} else {
+			content = sortKeys(content);
+		}
 
-			db.prepare('SELECT * FROM books WHERE volume_id = ?').all(volume.id)
-				.forEach((book) => {
-					book = cleanRecord(book, 'book')
-					const bookDir = path.join(volDir, book.name);
+		content = JSON.stringify(content);
+	}
 
-					mkdir(bookDir, () => {
-						writeFile(path.join(bookDir, 'index.json'), JSON.stringify(book));
+	writeFileSync(pathname, content);
+}
 
-						db.prepare('SELECT * FROM chapters WHERE book_id = ?').all(book.id)
-							.forEach((chapter) => {
-								chapter = cleanRecord(chapter, 'chapter');
-								
-								const verses = db.prepare('SELECT * FROM verses WHERE chapter_id = ?').all(chapter.id);
+function select(table, where = null) {
+	let vals = [];
 
-								chapter.verses = verses.map(verse => {
-									verse = cleanRecord(verse, 'verse');
+	if (where !== null) {
+		const keys = Object.keys(where);
 
-									delete verse.chapterId;
-									verse.chapter = chapter.number;
+		vals = Object.values(where);
 
-									return verse;
-								});
+		where = ` WHERE ${ keys.map(key => `${ key } = ?`).join(' AND ') }`;
+	} else {
+		where = '';
+	}
 
-								writeFile(path.join(bookDir, `chapter-${ chapter.number }.json`), JSON.stringify(chapter));
-							});
-					});
+	const query = `SELECT * FROM ${ table + where }`;
+
+	return db.prepare(query).all(...vals)
+		.map((val) => cleanRecord(val, table.replace(/s$/, '')));
+}
+
+const index = {
+	volumes: [],
+	books: [],
+};
+const rootDir = path.join(__dirname, 'json');
+
+select('volumes').forEach((volume) => {
+	index.volumes.push(volume.name);
+
+	volume.books = [];
+	volume.bookCount = 0;
+	volume.chapterCount = 0;
+	volume.verseCount = 0;
+
+	const volDir = path.join(rootDir, volume.name);
+
+	select('books', { volume_id: volume.id }).forEach((book) => {
+		index.books.push(book.name);
+
+		volume.books.push(book.name);
+		volume.bookCount++;
+
+		book.chapterCount = 0;
+		book.verseCount = 0;
+
+		const bookDir = path.join(volDir, book.name);
+
+		select('chapters', { book_id: book.id }).forEach((chapter) => {
+			volume.chapterCount++;
+			book.chapterCount++;
+
+			delete chapter.bookId;
+
+			chapter.verseCount = 0;
+
+			const chDir = path.join(bookDir, String(chapter.number));
+
+			const verses = select('verses', { chapter_id: chapter.id })
+				.map((verse) => {
+					delete verse.chapterId;
+					verse.chapter = chapter.number;
+
+					volume.verseCount++;
+					book.verseCount++;
+					chapter.verseCount++;
+
+					return verse;
 				});
+
+			makeFile([chDir, 'index.json'], chapter);
+			makeFile([chDir, 'verses.json'], verses);
 		});
+
+		makeFile([bookDir, 'index.json'], book);
+		// console.log(book);
 	});
+
+	makeFile([volDir, 'index.json'], volume);
+	console.log(volume);
+});
+
+makeFile([rootDir, 'index.json'], index);
+// console.log(index);
+
+console.log('DONE!');
